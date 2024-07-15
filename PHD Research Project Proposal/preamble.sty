@@ -1,0 +1,148 @@
+\ProvidesPackage{preamble}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ bottom=60mm,
+ top=25mm,
+ }
+\usepackage{graphicx} 
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage{amssymb}
+\usepackage[most]{tcolorbox}
+\usepackage{afterpage}
+\usepackage{minted}
+\tcbuselibrary{minted}
+\usepackage[defaultfam,tabular,lining]{montserrat}
+\usepackage[T1]{fontenc}
+
+\usepackage{eurosym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{chngcntr}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{csquotes}
+\usepackage[printonlyused]{acronym}
+\usepackage{cite}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{microtype} 
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage[bottom, flushmargin]{footmisc}
+
+\renewcommand*\oldstylenums[1]{{\fontfamily{Montserrat-TOsF}\selectfont #1}}
+
+\setlength{\headsep}{1in}
+
+\newcommand\blankpage{%
+    \pagebreak
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+\let\olddocument=\document
+\let\oldenddocument=\enddocument
+
+\renewcommand{\title}[1]{\gdef\thetitle{#1}}
+
+\renewcommand{\date}[4]{\gdef\thedate{#1, #2 #3, #4}}
+
+\newcommand{\supervisor}[4]{
+    \gdef\thesupervisor{#1 #2, #3}
+    \gdef\thesupervisoraffiliation{#4}
+}
+
+\newcommand{\cosupervisor}[4]{
+    \gdef\thecosupervisor{#1 #2, #3}
+    \gdef\thecosupervisoraffiliation{#4}
+}
+
+\newcommand{\candidate}[1]{\gdef\thecandidate{#1}}
+
+\newcommand{\program}[1]{\gdef\theprogram{#1}}
+
+\renewenvironment{document}{\olddocument
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[C]{
+    \includegraphics[width=0.4\linewidth]{images/ista.png}
+}
+\begin{center}
+
+\vspace*{35pt}
+
+\noindent\large\textbf{RESEARCH PROJECT PROPOSAL AND PROJECT EXECUTION PLAN}   
+
+\vspace{5pt}\hfill
+
+\noindent \MakeUppercase\theprogram
+
+\vspace{75pt}\hfill
+
+\thetitle
+
+\@ifundefined{thecosupervisor}
+{% Supervisor
+    \vspace{75pt}\hfill
+    
+    \noindent\textbf{Supervisor:}
+    
+    \thesupervisor,
+    
+    \noindent \thesupervisoraffiliation
+}
+{% Supervisor + Co-Supervisor
+    \vspace{50pt}\hfill
+    
+    \noindent\textbf{Supervisor:}
+    
+    \thesupervisor,
+    
+    \noindent \thesupervisoraffiliation
+
+    \vspace{5pt}\hfill
+
+    \noindent\textbf{Co-Supervisor:}
+
+    \thecosupervisor,
+
+    \noindent \thecosupervisoraffiliation
+}%
+
+\vspace{50pt}\hfill
+
+\noindent\textbf{Candidate:}
+
+\thecandidate
+
+\vspace{50pt}\hfill
+
+\noindent\thedate
+
+\end{center}
+\pagenumbering{gobble}
+
+\pagebreak
+
+\pagenumbering{arabic}
+\fancyfoot[c]{\thepage}
+
+}{
+\pagebreak
+\bibliographystyle{plain}
+\bibliography{references}{}
+\oldenddocument
+}
