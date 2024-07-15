@@ -1,5 +1,9 @@
 <div align="center">
   <img src="Resources/Header.png" width="65%" alt="ISTA LaTeX Templates"/>
+  <br><br><br>
+
+  **Not affiliated with ISCTE!**
+
   <br><br>
 </div>
 
