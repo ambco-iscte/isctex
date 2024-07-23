@@ -12,7 +12,7 @@
 \usepackage{chngcntr}
 \usepackage{graphicx}
 \usepackage[a4paper, margin=2.5cm]{geometry}
-\usepackage[english]{babel}
+\usepackage[portuguese, english]{babel}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -176,8 +176,10 @@
 \newcommand{\dedication}[1]{\gdef\thededication{#1}}
 
 \newcommand{\resumo}[2]{
+    \selectlanguage{portuguese}
     \gdef\theabstractpt{#1}
     \gdef\thekeywordspt{#2}
+    \selectlanguage{english}
 }
 
 \renewcommand{\abstract}[2]{
