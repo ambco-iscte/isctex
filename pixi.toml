@@ -1,0 +1,16 @@
+[project]
+name = "isctex"
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[tasks]
+ir = "radian"
+compile_diss_tinytex = { cmd = 'R -e "tinytex::pdflatex(\"main.tex\", engine_args = \"-shell-escape\")"', cwd = "ISTA Master's Dissertation" }
+install_tinytex = 'R -e "tinytex::install_tinytex(bundle = \"TinyTeX-2\")"'
+uninstall_tinytex = 'R -e "tinytex::uninstall_tinytex()"'
+compile_diss_miktex = {cwd = "ISTA Master's Dissertation", cmd = "lualatex -shell-escape main.tex"}
+
+[dependencies]
+r-tinytex = ">=0.52,<1"
+radian = ">=0.6.12,<0.7"
+miktex = ">=24.4,<25"
