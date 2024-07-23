@@ -58,9 +58,9 @@ Additionally, you should include an abstract and keywords, remembering to add a 
 The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibTeX. The [ISTA Master's Dissertation](ISTA%20Master's%20Dissertation) folder contains a sample project you can use with [Overleaf](https://www.overleaf.com/) (where it was made!) or similar LaTeX development environments. It contains a pre-structured file with some example content on how to use LaTeX.
 
 <details>
-<summary><h2>Notes on compiling locally</h2></summary>
+<summary><b>Notes on compiling locally</b></summary>
 
-To compile the template locally, I recommend using (MiKTeX)[https://miktex.org/] on windows, and (TinyTex)[https://yihui.org/tinytex/#for-other-users] on Linux, since both* can resolve package installations. I've had the best luck compiling with LuaLaTeX.
+To compile the template locally, I recommend using [MiKTeX](https://miktex.org/) on windows, and [TinyTex](https://yihui.org/tinytex/#for-other-users) on Linux, since both* can resolve package installations. I've had the best luck compiling with LuaLaTeX.
 
 ```bash
 # inside the ISTA Master's Dissertation folder:
