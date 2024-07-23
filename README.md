@@ -8,7 +8,10 @@
 </div>
 
 # Master's Dissertation
-**Updated for [ISTA's Style Guidelines](https://www.iscte-iul.pt/conteudos/estudantes/informacao-academica/percurso-academico/area-mestrado/926/entrega-de-dissertacao-ou-trabalho-de-projeto) as of July 15th, 2024.**
+
+> [!NOTE]
+> Updated for [ISTA's Style Guidelines](https://www.iscte-iul.pt/conteudos/estudantes/informacao-academica/percurso-academico/area-mestrado/926/entrega-de-dissertacao-ou-trabalho-de-projeto) as of July 15th, 2024.
+
 
 This template serves as an adaptation of ISTA's style guidelines for dissertations or projects to be used with LaTeX. The template has been structured so that all non-work-related details, such as LaTeX package configurations and the like, are stored in a separate file so as to not hinder the author's writing process.
 
@@ -54,10 +57,23 @@ Additionally, you should include an abstract and keywords, remembering to add a 
 
 The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibTeX. The [ISTA Master's Dissertation](ISTA%20Master's%20Dissertation) folder contains a sample project you can use with [Overleaf](https://www.overleaf.com/) (where it was made!) or similar LaTeX development environments. It contains a pre-structured file with some example content on how to use LaTeX.
 
-<br>
+<details>
+<summary><h2>Notes on compiling locally</h2></summary>
+
+To compile the template locally, I recommend using (MiKTeX)[https://miktex.org/] on windows, and (TinyTex)[https://yihui.org/tinytex/#for-other-users] on Linux, since both* can resolve package installations. I've had the best luck compiling with LuaLaTeX.
+
+```bash
+# inside the ISTA Master's Dissertation folder:
+lualatex -shell-escape main.tex
+```
+<sup>*TinyTex resolves packages if you compile in R, using `tinytex::lualatex`; even then in my experience is not great. I recommend
+doing `tlmgr install scheme-full` if you're getting issues with compiling.</sup>
+</details>
 
 # Research Project Proposal
-**Updated for the [Information Science and Technology PhD Research Project Proposal](https://www.iscte-iul.pt/assets/files/2022/08/03/1659547576152_Modelo_de_Projeto_de_Investiga__o_PhD_DCTI.pdf) MS Word template as of July 15th, 2024.**
+
+> [!NOTE]
+> Updated for the [Information Science and Technology PhD Research Project Proposal](https://www.iscte-iul.pt/assets/files/2022/08/03/1659547576152_Modelo_de_Projeto_de_Investiga__o_PhD_DCTI.pdf) MS Word template as of July 15th, 2024.
 
 This LaTeX template is for the Research Project Proposal form required to apply to the [PhD Program in Information Science and Technology](https://www.iscte-iul.pt/course/53/doctorate-degree-phd-in-information-science-and-technology/candidacy) at Iscte. As with the Master's dissertation template, non-work-related information such as LaTeX package configurations is stored in a separate file to facilitate the writing of the form proper. 
 
