@@ -58,17 +58,19 @@ Additionally, you should include an abstract and keywords, remembering to add a 
 The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibTeX. The [ISTA Master's Dissertation](ISTA%20Master's%20Dissertation) folder contains a sample project you can use with [Overleaf](https://www.overleaf.com/) (where it was made!) or similar LaTeX development environments. It contains a pre-structured file with some example content on how to use LaTeX.
 
 <details>
-<summary><b>Notes on compiling locally</b></summary>
+<summary><b>Notes on Compiling Locally</b></summary>
 
-To compile the template locally, I recommend using [MiKTeX](https://miktex.org/) on windows, and [TinyTex](https://yihui.org/tinytex/#for-other-users) on Linux, since both* can resolve package installations. I've had the best luck compiling with LuaLaTeX.
+To compile the template locally, we recommend using [MiKTeX](https://miktex.org/) on Windows, and [TinyTex](https://yihui.org/tinytex/#for-other-users) on Linux, since both* can resolve package installations. We've had the best luck compiling with LuaLaTeX.
 
 ```bash
 # inside the ISTA Master's Dissertation folder:
 lualatex -shell-escape main.tex
 ```
-<sup>*TinyTex resolves packages if you compile in R, using `tinytex::lualatex`; even then in my experience is not great. I recommend
-doing `tlmgr install scheme-full` if you're getting issues with compiling.</sup>
+<sup>*TinyTex resolves packages if you compile in R, using `tinytex::lualatex`; even then, in our experience it's not great. We recommend
+doing `tlmgr install scheme-full` if you're having issues with the compilation.</sup>
 </details>
+
+<br>
 
 # Research Project Proposal
 
