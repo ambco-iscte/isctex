@@ -1,0 +1,348 @@
+\documentclass[12pt,reqno,twoside]{amsbook}
+
+% Use this for your final thesis document. 
+\usepackage{dcti}
+
+% Use this instead for your yearly PhD reports.
+%\usepackage[report]{dcti}
+
+% =====================================================================
+%                               INFORMATION
+% =====================================================================
+
+% Title of the Thesis
+\title{Title of a Great PhD Thesis}
+
+% Author (Full Name)
+\author{Your Full Name}
+
+% Program (Name of Degree, Specialty)
+\program{Name of the Doctoral Programme}{Your PhD Specialty}
+
+% Department
+\department{Department of Typesetting}
+
+% Supervisors (\\ breaks the line; ~\\ adds a blank line)
+\supervisors{
+Doctor Professor 1, Assistant Professor,\\
+Iscte - Instituto Universitário de Lisboa
+~\\~\\
+Doctor Professor 2, Assistant Professor,\\
+Iscte - Instituto Universitário de Lisboa
+~\\~\\
+Doctor Professor 3, Assistant Professor,\\
+Iscte - Instituto Universitário de Lisboa
+}
+
+% Jury (\\ breaks the line; ~\\ adds a blank line)
+\jury{
+Title Name, Category, Institution
+~\\~\\
+Title Name, Category, Institution
+~\\~\\
+Title Name, Category, Institution
+~\\~\\
+Title Name, Category, Institution
+}
+
+% Submission Date (Month, Year)
+\date{Month}{Year}
+
+% Acknowledgements -- Optional if no grants or fundings need to be listed.
+\acknowledgements{
+    Write here your acknowledgements and, if applicable, any grants or sources of funding.
+}
+
+% Dedication -- Optional
+\dedication{
+    Write here your dedication.
+}
+
+% Acronyms -- Optional, but you should use it if you use acronyms in your text!
+%
+% You can define as many acronyms as you want, like this:
+%   \acro{TIAA}{This Is An Acronym}
+% You can reference an acronym as-is inline using e.g. \ac{TIAA}.
+% If you need to reference a pluralised acronym, instead use \acp.
+\acronyms{
+    \acro{DSR}{Design Science Research}
+    \acro{IS}{Information System}
+}
+% =====================================================================
+
+
+
+
+
+
+
+
+
+
+% =====================================================================
+%                           RESUMO + ABSTRACT
+% =====================================================================
+% Resumo, em Português
+\resumo
+{
+Escreva aqui o resumo em Português. Existe um limite de 250 palavras. A tese deverá ter um Resumo em português e um em inglês (Abstract), contudo poderá também ter em outros idiomas, para além destes dois.
+}
+{
+Palavras-chave, separadas, por, vírgulas (de 3 a 6 palavras-chave)
+}
+
+% Abstract
+\abstract
+{
+Write here the abstract in English. There is a 250 word limit.
+}
+{
+Keywords, separated, by, commas (3 to 6 keywords)
+}
+% =====================================================================
+
+
+
+
+
+
+
+
+
+
+% =====================================================================
+%                               MAIN BODY
+% =====================================================================
+\begin{document}
+
+\chapter{Introduction}\label{ch:introduction}
+The thesis should be between 150 and 200 pages (maximum) from the beginning of the Introduction to the end of the Conclusions.
+
+All chapters automatically begin on odd-numbered pages. If a chapter would start on an even-numbered page, a blank page is automatically added.
+
+Don't forget:
+\begin{itemize}
+    \item Rigor in form: grammatical correctness, sobriety, uniformity;
+    \item Rigor in content: definitions of terms, citations;
+    \item Choice of person of the verb: us, impersonal.
+\end{itemize}
+
+
+\section{This is a Section}\label{sec:example_section}
+The first paragraph of a chapter or section is not indented, i.e. it is aligned with the title. All following paragraphs have an indentation of 0.7cm. This is done automatically.
+
+We are currently in Chapter \ref{ch:introduction}. When referring to chapters or sections this way, it's customary to write ``Section'', ``Chapter'', and so on in uppercase, as opposed to ``section'' or ``chapter''.
+
+\subsection{Subsection}
+You can have sub-sections within sections. Use these to better organise your content, if you feel like it's needed.
+
+\subsubsection{Sub-subsection}
+You can even have sub-subsections! These are formatted differently (as you can see here), and do not appear in the Table of Contents.
+
+\section{This is Another Section}
+
+This is another section. You can define as many as you want, and they are automatically numbered within their chapter.
+
+
+
+
+
+
+
+
+
+
+\chapter{Literature Review}\label{ch:literature_review}
+
+References should be added to the references.bib file, in BibTeX format. They can then be cited in the text. Anything you cite in the text is automatically added to the list of References at the end of the document.
+
+A paper by Peffers et al. \cite{Peffers2007} explores the usage of \ac{DSR} for research in \acp{IS}.
+
+
+
+
+
+
+
+
+
+
+\chapter{Typesetting in \LaTeX}\label{ch:typesetting}
+
+Your text can be written in \textit{italics} or \textbf{bold}. If you're feeling adventurous, you can even do \textit{\textbf{both}} at the same time! There's also \texttt{monospaced} and \textsc{capitalised} text.
+
+\noindent You can remove the indentation from a paragraph which isn't the first of its chapter or section. If you need to do some extra sophisticated formatting, you may wrap your text in some special environments. For example, you can horizontally center some content on the page:
+\begin{center}
+    Isn't that cool?
+\end{center}
+
+\noindent A lot of the time, you'll want to list things out:
+\begin{itemize}
+    \item This is a list with bullet points;
+    \item You can add as many as you like!
+\end{itemize}
+
+\noindent Your lists can also be numbered:
+\begin{enumerate}
+    \item This is the first item;
+    \item And so on...
+\end{enumerate}
+
+\noindent Sometimes, it might be useful to change what is used as a ``bullet point'' within a list. For example, you might want your research questions labelled ``RQ1'' and ``RQ2''. For example, this one might be useful:
+
+\begin{center}
+    \verb|\begin{enumerate}[label=\textbf{RQ\arabic*}] ... \end{enumerate}|
+\end{center}
+
+\noindent Here's what that looks like:
+
+\begin{enumerate}[label=\textbf{RQ\arabic*}] 
+    \item Are LaTeX documents difficult to use?
+\end{enumerate}
+
+\noindent You can format tables using LaTeX, as seen in Table \ref{table:example}. There's a lot of customisation options, so it helps to use a website that creates them for you. Here's a good option: \url{https://www.tablesgenerator.com/}.
+
+\begin{table}[h]
+\caption{Table captions should always appear \textbf{above} the table.}
+\begin{tabular}{l|l|l}
+ID & Name  & Email           \\ \hline
+1  & Alice & alice@latex.com \\
+2  & Bob   & bob@latex.com  
+\end{tabular}
+\label{table:example}
+\end{table}
+
+Images can also be included, as you can see in Figure \ref{fig:example}. You can make them smaller or larger by changing their \texttt{width}. LaTeX usually places them wherever it decides they will fit best, but you can try modifying this behaviour using placement modifiers.\footnote{\url{https://www.overleaf.com/learn/latex/Positioning_images_and_tables}}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/ista.png}
+    \caption{Figure captions should always appear \textbf{below} the figure.}
+    \label{fig:example}
+\end{figure}
+
+\section{Mathematical Objects}
+
+LaTeX lets you typeset nice-looking mathematical formulae. For example, let $x = 5$ and $y = 3$. Then, $xy = 15$.
+
+Some equations are so important that you can number them. For example, the series expansion of the function $y = \exp{x}$ at $x=0$ is given by the infinite sum
+\begin{equation}
+    \sum_{n=0}^{\infty} \frac{x^n}{n!}.
+\end{equation}
+
+This definition is one of the ways that we can check that the derivative of an exponential is itself. Actually, we can prove this as a \textit{Theorem}.
+
+\begin{theorem}
+    Let $y = \exp{x}$. The derivative is given by $y' = \exp{x}$.
+\end{theorem}
+
+\begin{proof}
+\[
+\frac{d}{dx} \exp{x} = \frac{d}{dx} \sum_{n=0}^{\infty} \frac{x^n}{n!} = \sum_{n=1}^{\infty} \frac{d}{dx} \frac{x^n}{n!} = \sum_{n=1}^{\infty}  \frac{n x^{n-1}}{n!} = \sum_{n=1}^{\infty}  \frac{x^{n-1}}{(n-1)!} = \exp{x}
+\]
+\end{proof}
+
+\begin{corollary}
+    The function $y=\exp{x}$ is an eigenfunction of the derivative operator.
+\end{corollary}
+
+\noindent If you need to state a known, named theorem, you can also do that.
+
+\begin{theorem}[Fundamental Theorem of Calculus]
+For any continuous function $f$, we have
+    \[
+    \int_{a}^{b} f'(t) dt = f(b) - f(a).
+    \]
+\end{theorem}
+
+\noindent Besides Theorem, Corollary, and Proof, you can use the following environments:
+\begin{itemize}
+    \item Axiom
+    \item Case
+    \item Claim
+    \item Conclusion
+    \item Condition
+    \item Conjecture
+    \item Corollary
+    \item Criterion
+    \item Definition
+    \item Example
+    \item Exercise
+    \item Lemma
+    \item Notation
+    \item Problem
+    \item Proposition
+    \item Remark
+    \item Solution
+    \item Summary
+    \item Theorem
+\end{itemize}
+
+\section{Computer Code}
+
+You can typset code in your dissertation by using Listings\footnote{\url{https://www.overleaf.com/learn/latex/Code_listing}}, as in Figure \ref{code:listings}, the Minted\footnote{\url{https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted}} syntax highlighting package, as in Figure \ref{code:minted}, or, if you need to write some pseudocode, the Algorithm environment, as in Algorithm \ref{alg:example}.
+
+\begin{figure}[h]
+\begin{lstlisting}[language=Java]
+public static void main(String[] args) {
+    System.out.println("Hello world!");
+}
+\end{lstlisting}
+\caption{Example of code formatting using listings.}\label{code:listings}
+\end{figure}
+
+\begin{figure}[h]
+\begin{minted}{java}
+public static void main(String[] args) {
+    System.out.println("Hello world!");
+}
+\end{minted}
+\caption{Example of code formatting using minted.}\label{code:minted}
+\end{figure}
+
+\begin{algorithm}
+    \caption{Algorithm for Multiplying Two Integers}
+    \begin{algorithmic}
+        \Require $x\in\mathbb{N}$
+        \Require $y\in\mathbb{N}$
+        \State $i \gets 0$
+        \State $z \gets 0$
+        \While{$i < x$}
+            \State $z \gets z + y$
+            \State $i \gets i + 1$
+        \EndWhile
+        \State \Return $z$
+    \end{algorithmic}
+    \label{alg:example}
+\end{algorithm}
+
+
+
+
+
+
+
+
+
+
+\chapter{Further Chapters}
+
+You can write anything you want! It's your dissertation; go wild.\footnote{Within your school's style guidelines.} Overleaf has a great set of tutorials\footnote{\url{https://www.overleaf.com/learn/latex/Tutorials}} if you need some help with \LaTeX. Happy writing!
+
+
+
+
+
+
+
+
+
+
+\chapter{Conclusions}
+
+\LaTeX\space is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.
+
+This template conforms to ISTA's thesis style guidelines\footnote{\url{https://www.iscte-iul.pt/conteudos/academic-information/academic-journey/phd-area/2061/submission-of-thesis-or-compilation-of-articles}}, accessed on May 15\textsuperscript{th} 2025.
+
+\end{document}
+% =====================================================================

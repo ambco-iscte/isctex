@@ -93,3 +93,58 @@ Your project proposal should begin by defining information on the author and the
 ```
 
 The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibTeX. The [PHD Research Project Proposal](PHD%20Research%20Project%20Proposal) folder contains a sample project with a pre-structured file that you only need to fill out, including the sections which are required by the project proposal guidelines.
+
+<br>
+
+# PhD Thesis
+
+This LaTeX template is for your PhD Thesis, or for the yearly reports for the same doctoral programme at Iscte. As with the previous templates, non-work-related information such as LaTeX package configurations is stored in a separate file.
+
+The package can be used in two ways, depending on if you want your thesis document or a yearly report.
+
+For the thesis proper:
+```tex
+\usepackage{dcti}
+```
+
+For yearly reports:
+```tex
+\usepackage[report]{dcti}
+```
+
+Your thesis should begin by defining information on the thesis, namely, its title, author's name, supervisor(s), jury / supervision committee, doctoral programme name, department name, and date.
+```tex
+\title{Title of a Great PhD Thesis}
+
+\author{Your Full Name}
+
+\program{Name of the Doctoral Programme}{Your PhD Specialty}
+
+\department{Department of Typesetting}
+
+\supervisors{
+Doctor Professor 1, Assistant Professor,\\
+Iscte - Instituto Universitário de Lisboa
+~\\~\\
+Doctor Professor 2, Assistant Professor,\\
+Iscte - Instituto Universitário de Lisboa
+~\\~\\
+Doctor Professor 3, Assistant Professor,\\
+Iscte - Instituto Universitário de Lisboa
+}
+
+\jury{
+Title Name, Category, Institution
+~\\~\\
+Title Name, Category, Institution
+~\\~\\
+Title Name, Category, Institution
+~\\~\\
+Title Name, Category, Institution
+}
+
+% Submission Date (Month, Year)
+\date{Month}{Year}
+```
+
+The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibTeX. As with the previous templates, the [PhD Thesis](PhD%20Thesis) folder contains an example file.
