@@ -12,7 +12,7 @@
 \usepackage{chngcntr}
 \usepackage{graphicx}
 \usepackage[a4paper, margin=2.5cm]{geometry}
-\usepackage[portuguese, english]{babel}
+\usepackage[english]{babel}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -33,6 +33,14 @@
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \usepackage{csquotes}
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    citecolor=black,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+}
 %
 % you may need to uncomment the command below if you use eps format for figures
 %\usepackage{epstopdf}
@@ -150,6 +158,10 @@
 \let\olddocument=\document
 \let\oldenddocument=\enddocument
 
+\makeatletter
+\def\l@figure{\@tocline{0}{3pt plus2pt}{0pt}{2pc}{}}
+\makeatother
+
 % =================================================================
 \renewcommand{\title}[1]{\gdef\thetitle{#1}}
 
@@ -176,10 +188,8 @@
 \newcommand{\dedication}[1]{\gdef\thededication{#1}}
 
 \newcommand{\resumo}[2]{
-    \selectlanguage{portuguese}
     \gdef\theabstractpt{#1}
     \gdef\thekeywordspt{#2}
-    \selectlanguage{english}
 }
 
 \renewcommand{\abstract}[2]{
@@ -201,7 +211,7 @@
 ~\\
 ~\\
 ~\\
-\thetitle\\
+\textbf{\thetitle}\\
 ~\\
 ~\\
 ~\\
@@ -254,7 +264,7 @@
 ~\\
 ~\\
 ~\\
-\thetitle\\
+\textbf{\thetitle}\\
 ~\\
 ~\\
 ~\\
@@ -325,13 +335,13 @@
 \theabstractpt
 
 \vspace{3ex}
-\textbf{Palavras-Chave:} \textit{\thekeywordspt}
+\noindent\textbf{Palavras-Chave:} \textit{\thekeywordspt}
 
 \chapter*{Abstract}
 \theabstract
 
 \vspace{3ex}
-\textbf{Keywords:} \textit{\thekeywords}
+\noindent\textbf{Keywords:} \textit{\thekeywords}
 
 \tableofcontents
 \listoffigures

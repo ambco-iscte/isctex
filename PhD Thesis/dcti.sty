@@ -36,6 +36,14 @@
 \RequirePackage{algorithmicx}
 \RequirePackage{algpseudocode}
 \RequirePackage{csquotes}
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    citecolor=black,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+}
 %
 % you may need to uncomment the command below if you use eps format for figures
 %\RequirePackage{epstopdf}
@@ -210,7 +218,7 @@
 \ifdef\isreport{
 \textbf{\thetitle}\\
 ~\\
-\theyear\space Report
+\theyear\space Progress Report
 ~\\
 }{
 \textbf{\thetitle}\\
@@ -252,7 +260,7 @@ Supervisor(s):
 \ifdef\isreport{
 \textbf{\thetitle}\\
 ~\\
-\theyear\space Report
+\theyear\space Progress Report
 ~\\
 }{
 \textbf{\thetitle}\\
@@ -320,7 +328,7 @@ Committee}{Jury}:
     \chapter*{Acknowledgments}
     \setcounter{page}{1}
     \theacknowledgements
-}
+}}
 
 \chapter*{Resumo}
 \theabstractpt
@@ -333,7 +341,6 @@ Committee}{Jury}:
 
 \vspace{3ex}
 \noindent\textbf{Keywords:} \textit{\thekeywords}
-}
 
 \tableofcontents
 \listoffigures
@@ -356,7 +363,7 @@ Committee}{Jury}:
 \setcounter{page}{1}
 \pagenumbering{arabic}
 }{
-\bibliographystyle{apalike}
+\bibliographystyle{plain}
 \bibliography{references}{}
 \oldenddocument
 }
