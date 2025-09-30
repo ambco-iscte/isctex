@@ -68,14 +68,24 @@
 }
 \lstset{style=prettycode}
 
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\subsubsection}
+{0pt}{2.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
 %
 \makeatletter
     \def\section{\@startsection{section}{1}%
       \z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
       {\normalfont\bfseries\flushleft}}
+      
     \def\subsection{\@startsection{subsection}{2}%
       \z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
       {\normalfont\bfseries\flushleft}}
+
+    \def\subsubsection{\@startsection{subsubsection}{3}%
+      \z@{.5\linespacing\@plus.7\linespacing}{.1\linespacing}%
+      {\normalfont\itshape}}
+
     \let\@afterindenttrue\@afterindentfalse
 \makeatother
 
@@ -107,7 +117,30 @@
 %
 \makeatletter
 \newcommand\frontFont{\@setfontsize\frontFont{14.4}{14.4}}
+\newcommand\numberprefix{}
+\def\numberline#1{\hb@xt@\@tempdima{\numberprefix #1\hfil}}
+\def\l@figure#1#2{\@tocline{0}{3pt plus2pt}{0pt}{6pc}{}%
+  {\renewcommand\numberprefix{Figure~}#1}{#2}}
+\def\l@table#1#2{\@tocline{0}{3pt plus2pt}{0pt}{6pc}{}%
+  {\renewcommand\numberprefix{Table~}#1}{#2}}
 \makeatother
+
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside%
+  \ifodd\c@page\else
+  \vspace*{\fill}
+  \hfill
+  \begin{center}
+  {\fontfamily{Montserrat-TOsF}\selectfont\small [ This page is intentionally left blank. ]}
+  
+  \end{center}
+  \vspace{\fill}
+  \thispagestyle{empty}
+  \newpage
+ \if@twocolumn\hbox{}\newpage\fi\fi\fi
+}
+\makeatother
+
 %
 % Please write the references according to your school
 %
@@ -159,7 +192,7 @@
 \let\oldenddocument=\enddocument
 
 \makeatletter
-\def\l@figure{\@tocline{0}{3pt plus2pt}{0pt}{2pc}{}}
+\def\l@subsection{\@tocline{2}{0pt}{2.5pc}{5pc}{}}
 \makeatother
 
 % =================================================================
@@ -200,6 +233,8 @@
 \newcommand{\acronyms}[1]{\gdef\theacronyms{#1}}
 % =================================================================
 
+\definecolor{ISCTEDarkBlue}{rgb}{0,0.08,0.45}
+
 \renewenvironment{document}{\olddocument
 
 \sffamily
@@ -207,7 +242,7 @@
 \begin{flushleft}
 \includegraphics[width=6.03cm]{images/iscte.png}\\[3.3mm]
 
-{\color{blue!60!black}\hrulefill}
+{\color{ISCTEDarkBlue}\hrulefill}
 ~\\
 ~\\
 ~\\
@@ -255,7 +290,7 @@
 \begin{flushleft}
   \includegraphics[width=6.03cm]{images/ista.png}\\[7mm]
 
-{\color{blue!60!black}\hrulefill}
+{\color{ISCTEDarkBlue}\hrulefill}
 ~\\
 ~\\
 ~\\

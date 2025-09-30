@@ -10,7 +10,7 @@
 # Master's Dissertation
 
 > [!NOTE]
-> Updated for [ISTA's Style Guidelines](https://www.iscte-iul.pt/conteudos/estudantes/informacao-academica/percurso-academico/area-mestrado/926/entrega-de-dissertacao-ou-trabalho-de-projeto) as of July 15th, 2024.
+> Updated for [ISTA's Style Guidelines](https://www.iscte-iul.pt/conteudos/estudantes/informacao-academica/percurso-academico/area-mestrado/926/entrega-de-dissertacao-ou-trabalho-de-projeto) as of September 30th, 2025.
 
 
 This template serves as an adaptation of ISTA's style guidelines for dissertations or projects to be used with LaTeX. The template has been structured so that all non-work-related details, such as LaTeX package configurations and the like, are stored in a separate file so as to not hinder the author's writing process.
