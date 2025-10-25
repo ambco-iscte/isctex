@@ -12,6 +12,8 @@
 > [!NOTE]
 > Updated for [ISTA's Style Guidelines](https://www.iscte-iul.pt/conteudos/estudantes/informacao-academica/percurso-academico/area-mestrado/926/entrega-de-dissertacao-ou-trabalho-de-projeto) as of September 30th, 2025.
 
+> [!WARNING]
+> Sometimes (it depends on who verifies your dissertations' style guidelines compliance), ISTA asks that the Introduction chapter, and possibly the Conclusion chapter, not be numbered. To do this, you can append an asterisk to the `\chapter`, `\section`, `\subsection`, and `\subsubsection` commands to remove the numbering. For example: `\chapter*{Not a Numbered Chapter}`.
 
 This template serves as an adaptation of ISTA's style guidelines for dissertations or projects to be used with LaTeX. The template has been structured so that all non-work-related details, such as LaTeX package configurations and the like, are stored in a separate file so as to not hinder the author's writing process.
 
