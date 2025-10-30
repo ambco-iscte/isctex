@@ -116,12 +116,21 @@
 \numberwithin{equation}{chapter}
 %
 \makeatletter
-\newcommand\frontFont{\@setfontsize\frontFont{14.4}{14.4}}
+\newcommand\frontFont{\@setfontsize\frontFont{14}{14}}
 \newcommand\numberprefix{}
 \def\numberline#1{\hb@xt@\@tempdima{\numberprefix #1\hfil}}
-\def\l@figure#1#2{\@tocline{0}{3pt plus2pt}{0pt}{6pc}{}%
+
+% ============================================================
+\newcommand{\lofskip}[1]{\gdef\listOfFiguresLeftSpacing{#1}}
+\newcommand{\lotskip}[1]{\gdef\listOfTablesLeftSpacing{#1}}
+% ============================================================
+
+% List of Figures
+\def\l@figure#1#2{\@tocline{0}{3pt plus2pt}{0pt}{\ifdef\listOfFiguresLeftSpacing{\listOfFiguresLeftSpacing}{6pc}}{}%
   {\renewcommand\numberprefix{Figure~}#1}{#2}}
-\def\l@table#1#2{\@tocline{0}{3pt plus2pt}{0pt}{6pc}{}%
+
+% List of Tables
+\def\l@table#1#2{\@tocline{0}{3pt plus2pt}{0pt}{\ifdef\listOfTablesLeftSpacing{\listOfTablesLeftSpacing}{6pc}}{}%
   {\renewcommand\numberprefix{Table~}#1}{#2}}
 \makeatother
 
@@ -158,16 +167,16 @@
   \numberwithin{section}{chapter}
 \fancyhf{}
 \pagestyle{fancy}
-\fancyfoot[LE,RO]{\scriptsize\thepage}
+\fancyfoot[LE,RO]{\normalsize\thepage}
 %
 \makeatletter
 \def\ps@plain{\ps@empty
  \def\@evenfoot{%
-   \normalfont\scriptsize
+   \normalfont\normalsize
    \rlap{\thepage}\hfil
    }%
  \def\@oddfoot{%
-   \normalfont\scriptsize\hfil
+   \normalfont\normalsize\hfil
    \llap{\thepage}
    }%
 }
@@ -206,14 +215,8 @@
 
 \newcommand{\program}[1]{\gdef\theprogram{#1}}
 
-\newcommand{\supervisor}[4]{
-    \gdef\thesupervisor{#1 #2, #3}
-    \gdef\thesupervisoraffiliation{#4}
-}
-
-\newcommand{\cosupervisor}[4]{
-    \gdef\thecosupervisor{#1 #2, #3}
-    \gdef\thecosupervisoraffiliation{#4}
+\newcommand{\supervisors}[1]{
+    \gdef\thesupervisors{#1}
 }
 
 \newcommand{\acknowledgements}[1]{\gdef\theacknowledgements{#1}}
@@ -250,9 +253,7 @@
 ~\\
 ~\\
 ~\\
-~\\
 \theauthor\\
-~\\
 ~\\
 ~\\
 ~\\
@@ -260,30 +261,11 @@
 ~\\
 ~\\
 ~\\
-\ifdef\thecosupervisor
-{
-    Supervisor:
-    ~\\
-    \thesupervisor,\\
-    \thesupervisoraffiliation
-    ~\\
-    ~\\
-    Co-Supervisor:
-    ~\\
-    \thecosupervisor,\\
-    \thecosupervisoraffiliation
-}
-{
-    Supervisor:
-    ~\\
-    \thesupervisor,\\
-    \thesupervisoraffiliation
-}
+Supervisor(s):\\
 ~\\
+\thesupervisors
 ~\\
-~\\
-~\\
-\thedate
+\vfill\thedate
 \end{flushleft}
 \thispagestyle{empty}
 \cleardoublepage
@@ -303,9 +285,7 @@
 ~\\
 ~\\
 ~\\
-~\\
 \theauthor\\
-~\\
 ~\\
 ~\\
 ~\\
@@ -313,30 +293,11 @@
 ~\\
 ~\\
 ~\\
-\ifdef\thecosupervisor
-{
-    Supervisor:
-    ~\\
-    \thesupervisor,\\
-    \thesupervisoraffiliation
-    ~\\
-    ~\\
-    Co-Supervisor:
-    ~\\
-    \thecosupervisor,\\
-    \thecosupervisoraffiliation
-}
-{
-    Supervisor:
-    ~\\
-    \thesupervisor,\\
-    \thesupervisoraffiliation
-}
+Supervisor(s):\\
 ~\\
+\thesupervisors
 ~\\
-~\\
-~\\
-\thedate
+\vfill\thedate
 \end{flushleft}
 \thispagestyle{empty}
 \rmfamily

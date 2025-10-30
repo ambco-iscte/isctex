@@ -2,9 +2,14 @@
 
 % Use this for your final thesis document. 
 \usepackage{dcti}
-
 % Use this instead for your yearly PhD reports.
 %\usepackage[report]{dcti}
+
+% Change these values if the titles in your list of figures/tables intersect with the index numbers.
+% =====================================================================
+\lofskip{6pc} % Space between Figure index and title in  List of Figures
+\lotskip{6pc} % Space between Table index and title in the List of Tables
+% =====================================================================
 
 % =====================================================================
 %                               INFORMATION
@@ -67,6 +72,10 @@ Title Name, Category, Institution
 \acronyms{
     \acro{DSR}{Design Science Research}
     \acro{IS}{Information System}
+
+    % For "irregular" plurals, instead of \acp (which just appends an "s" at the end), you can define a custom plural using the \acroplural command. In this example, you wouldn't want QAYTs referring to "Question about your Thesiss"!
+    \acro{QAYT}{Question About Your Thesis}
+    \acroplural{QAYT}[QAYTs]{Questions About Your Thesis}
 }
 % =====================================================================
 
@@ -329,7 +338,7 @@ public static void main(String[] args) {
 
 \chapter{Further Chapters}
 
-You can write anything you want! It's your dissertation; go wild.\footnote{Within your school's style guidelines.} Overleaf has a great set of tutorials\footnote{\url{https://www.overleaf.com/learn/latex/Tutorials}} if you need some help with \LaTeX. Happy writing!
+You can write anything you want! It's your dissertation; go wild. If you have any more \acp{QAYT} or need some help with \LaTeX, Overleaf has a great set of tutorials\footnote{\url{https://www.overleaf.com/learn/latex/Tutorials}}. Happy writing!
 
 
 
@@ -344,7 +353,7 @@ You can write anything you want! It's your dissertation; go wild.\footnote{Withi
 
 \LaTeX\space is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.
 
-This template conforms to ISTA's thesis style guidelines\footnote{\url{https://www.iscte-iul.pt/conteudos/academic-information/academic-journey/phd-area/2061/submission-of-thesis-or-compilation-of-articles}}, accessed on May 15\textsuperscript{th} 2025.
+This template conforms to ISTA's thesis style guidelines\footnote{\url{https://www.iscte-iul.pt/conteudos/academic-information/academic-journey/phd-area/2061/submission-of-thesis-or-compilation-of-articles}}, accessed on May 15\textsuperscript{th} 2025, and implements guidelines given to students by the school's staff.
 
 \end{document}
 % =====================================================================

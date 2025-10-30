@@ -1,6 +1,12 @@
 \documentclass[12pt,reqno,twoside]{amsbook}
 \usepackage{preamble}
 
+% Change these values if the titles in your list of figures/tables intersect with the index numbers.
+% =====================================================================
+\lofskip{6pc} % Space between Figure index and title in  List of Figures
+\lotskip{6pc} % Space between Table index and title in the List of Tables
+% =====================================================================
+
 % =====================================================================
 %                               INFORMATION
 % =====================================================================
@@ -17,13 +23,14 @@
 % Department(s)
 \department{Department of Typesetting}
 
-% Supervisor (Title, Name, Category, Affiliation)
-\supervisor{Doctor}{Supervisor}{Assistant Professor}{
+% Supervisors
+\supervisors{
+    Ph.D. Professor Alice, Assistant Professor,\\
     Iscte - Instituto Universitário de Lisboa
-}
 
-% Supervisor (Title, Name, Category, Affiliation) -- Optional
-\cosupervisor{Doctor}{Co-Supervisor}{Assistant Professor}{
+    ~\\
+    
+    Ph.D. Professor Bob, Assistant Professor,\\
     Iscte - Instituto Universitário de Lisboa
 }
 
@@ -49,6 +56,10 @@
 \acronyms{
     \acro{DSR}{Design Science Research}
     \acro{IS}{Information System}
+
+    % For "irregular" plurals, instead of \acp (which just appends an "s" at the end), you can define a custom plural using the \acroplural command. In this example, you wouldn't want QAYDs referring to "Question about your Dissertations"!
+    \acro{QAYD}{Question About Your Dissertation}
+    \acroplural{QAYD}[QAYDs]{Questions About Your Dissertation}
 }
 % =====================================================================
 
@@ -93,6 +104,9 @@
 % =====================================================================
 \begin{document}
 
+% =====================================================================
+% If you get told that the Introduction and/or Conclusion should be un-numbered chapters, use \chapter* instead of \chapter (add an asterisk). The same can be done for sections with \section*, \subsection*, and \subsubsection*.
+% =====================================================================
 \chapter{Introduction}\label{ch:introduction}
 All chapters automatically begin on odd-numbered pages. If a chapter would start on an even-numbered page, a blank page is automatically added.
 
@@ -297,7 +311,7 @@ public static void main(String[] args) {
 
 \chapter{Further Chapters}
 
-You can write anything you want! It's your dissertation; go wild.\footnote{Within your school's style guidelines.} Overleaf has a great set of tutorials\footnote{\url{https://www.overleaf.com/learn/latex/Tutorials}} if you need some help with \LaTeX. Happy writing!
+You can write anything you want! It's your dissertation; go wild. If you have any more \acp{QAYD} or need some help with \LaTeX, Overleaf has a great set of tutorials\footnote{\url{https://www.overleaf.com/learn/latex/Tutorials}}. Happy writing!
 
 
 
@@ -312,7 +326,7 @@ You can write anything you want! It's your dissertation; go wild.\footnote{Withi
 
 \LaTeX\space is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.
 
-This template conforms to ISTA's dissertation style guidelines\footnote{\url{https://www.iscte-iul.pt/conteudos/estudantes/informacao-academica/percurso-academico/area-mestrado/926/entrega-de-dissertacao-ou-trabalho-de-projeto}}, accessed on July 12\textsuperscript{th} 2024.
+This template conforms to ISTA's dissertation style guidelines\footnote{\url{https://www.iscte-iul.pt/conteudos/estudantes/informacao-academica/percurso-academico/area-mestrado/926/entrega-de-dissertacao-ou-trabalho-de-projeto}}, accessed on July 12\textsuperscript{th} 2024, and implements guidelines given to students by the school's staff.
 
 \end{document}
 % =====================================================================

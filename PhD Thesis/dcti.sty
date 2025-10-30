@@ -120,12 +120,21 @@
 \numberwithin{equation}{chapter}
 
 \makeatletter
-\newcommand\frontFont{\@setfontsize\frontFont{14.4}{14.4}}
+\newcommand\frontFont{\@setfontsize\frontFont{14}{14}}
 \newcommand\numberprefix{}
 \def\numberline#1{\hb@xt@\@tempdima{\numberprefix #1\hfil}}
-\def\l@figure#1#2{\@tocline{0}{3pt plus2pt}{0pt}{6pc}{}%
+
+% ============================================================
+\newcommand{\lofskip}[1]{\gdef\listOfFiguresLeftSpacing{#1}}
+\newcommand{\lotskip}[1]{\gdef\listOfTablesLeftSpacing{#1}}
+% ============================================================
+
+% List of Figures
+\def\l@figure#1#2{\@tocline{0}{3pt plus2pt}{0pt}{\ifdef\listOfFiguresLeftSpacing{\listOfFiguresLeftSpacing}{6pc}}{}%
   {\renewcommand\numberprefix{Figure~}#1}{#2}}
-\def\l@table#1#2{\@tocline{0}{3pt plus2pt}{0pt}{6pc}{}%
+
+% List of Tables
+\def\l@table#1#2{\@tocline{0}{3pt plus2pt}{0pt}{\ifdef\listOfTablesLeftSpacing{\listOfTablesLeftSpacing}{6pc}}{}%
   {\renewcommand\numberprefix{Table~}#1}{#2}}
 \makeatother
 
@@ -277,8 +286,7 @@ Supervisor(s):
 ~\\
 \thesupervisors
 ~\\
-\vspace{\fill}
-\thedate
+\vfill\thedate
 \end{flushleft}
 \thispagestyle{empty}
 \cleardoublepage
@@ -318,8 +326,7 @@ Committee}{Jury}:
 ~\\
 \thejury
 ~\\
-\vspace{\fill}
-\thedate
+\vfill\thedate
 \end{flushleft}
 \thispagestyle{empty}
 \rmfamily
@@ -337,9 +344,9 @@ Committee}{Jury}:
 
 \noindent \textcopyright\space Copyright: \theauthor.\\
 
-\noindent O Iscte - Instituto Universit\'{a}rio de Lisboa tem o direito, perp\'{e}tuo e sem limites geogr\'{a}ficos, de arquivar e publicitar este trabalho atrav\'{e}s de exemplares impressos reproduzidos em papel ou de forma digital, ou por qualquer outro meio conhecido ou que venha a ser inventado, de o divulgar atrav\'{e}s de reposit\'{o}rios cient\'{i}ficos e de admitir a sua c\'{o}pia e distribuição com objetivos educacionais ou de investiga\c{c}\~{a}o, n\~{a}o comerciais, desde que seja dado cr\'{e}dito ao autor e editor.\\
+\noindent O Iscte - Instituto Universit\'{a}rio de Lisboa (ISCTE-IUL) tem o direito, perp\'{e}tuo e sem limites geogr\'{a}ficos, de arquivar e publicitar este trabalho atrav\'{e}s de exemplares impressos reproduzidos em papel ou de forma digital, ou por qualquer outro meio conhecido ou que venha a ser inventado, de o divulgar atrav\'{e}s de reposit\'{o}rios cient\'{i}ficos e de admitir a sua c\'{o}pia e distribuição com objetivos educacionais ou de investiga\c{c}\~{a}o, n\~{a}o comerciais, desde que seja dado cr\'{e}dito ao autor e editor.\\
 
-\noindent Iscte - University Institute of Lisbon reserves the right, in perpetuity and without geographical limitations, to archive and publish this work through printed copies reproduced on paper or digitally, or by any other means, known or which come to be invented, of disseminating the work through scientific repositories and to allow for its copying and distribution for non-commercial educational or research purposes, as long as credit is given to the author and editor.
+\noindent Iscte - Instituto Universit\'{a}rio de Lisboa (ISCTE-IUL) reserves the right, in perpetuity and without geographical limitations, to archive and publish this work through printed copies reproduced on paper or digitally, or by any other means, known or which come to be invented, of disseminating the work through scientific repositories and to allow for its copying and distribution for non-commercial educational or research purposes, as long as credit is given to the author and editor.
 
 \thispagestyle{empty}
 
