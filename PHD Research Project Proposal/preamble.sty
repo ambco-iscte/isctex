@@ -1,5 +1,7 @@
 \ProvidesPackage{preamble}
 
+\usepackage[defaultfam]{montserrat}
+
 \usepackage{geometry}
  \geometry{
  a4paper,
@@ -16,8 +18,6 @@
 \usepackage{afterpage}
 \usepackage{minted}
 \tcbuselibrary{minted}
-\usepackage[defaultfam,tabular,lining]{montserrat}
-\usepackage[T1]{fontenc}
 
 \usepackage{eurosym}
 \usepackage{amsmath}
@@ -41,6 +41,7 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage[bottom, flushmargin]{footmisc}
+\usepackage[useregional]{datetime2}
 
 \renewcommand*\oldstylenums[1]{{\fontfamily{Montserrat-TOsF}\selectfont #1}}
 
@@ -58,16 +59,8 @@
 
 \renewcommand{\title}[1]{\gdef\thetitle{#1}}
 
-\renewcommand{\date}[4]{\gdef\thedate{#1, #2 #3, #4}}
-
-\newcommand{\supervisor}[4]{
-    \gdef\thesupervisor{#1 #2, #3}
-    \gdef\thesupervisoraffiliation{#4}
-}
-
-\newcommand{\cosupervisor}[4]{
-    \gdef\thecosupervisor{#1 #2, #3}
-    \gdef\thecosupervisoraffiliation{#4}
+\newcommand{\supervisors}[1]{
+    \gdef\thesupervisors{#1}
 }
 
 \newcommand{\candidate}[1]{\gdef\thecandidate{#1}}
@@ -84,53 +77,31 @@
 
 \vspace*{35pt}
 
-\noindent\large\textbf{RESEARCH PROJECT PROPOSAL AND PROJECT EXECUTION PLAN}   
+\noindent\large{\Large\fontseries{extrabold}\selectfont Research Project Proposal and Project Execution Plan}   
 
 \vspace{5pt}\hfill
 
-\noindent \MakeUppercase\theprogram
-
-\vspace{75pt}\hfill
-
-\thetitle
-
-\@ifundefined{thecosupervisor}
-{% Supervisor
-    \vspace{75pt}\hfill
-    
-    \noindent\textbf{Supervisor:}
-    
-    \thesupervisor,
-    
-    \noindent \thesupervisoraffiliation
-}
-{% Supervisor + Co-Supervisor
-    \vspace{50pt}\hfill
-    
-    \noindent\textbf{Supervisor:}
-    
-    \thesupervisor,
-    
-    \noindent \thesupervisoraffiliation
-
-    \vspace{5pt}\hfill
-
-    \noindent\textbf{Co-Supervisor:}
-
-    \thecosupervisor,
-
-    \noindent \thecosupervisoraffiliation
-}%
+\noindent{\large\theprogram}
 
 \vspace{50pt}\hfill
 
-\noindent\textbf{Candidate:}
+\noindent\textbf{\thetitle}
 
-\thecandidate
+\vspace{50pt}\hfill
+    
+\noindent\textbf{\textsc{Supervisor(s):}}
+
+\thesupervisors
 
 \vspace{50pt}\hfill
 
-\noindent\thedate
+\noindent\textbf{\textsc{Candidate:}}
+
+\noindent\thecandidate
+
+\vspace{\fill}
+
+\noindent{\large Lisbon, \today}
 
 \end{center}
 \pagenumbering{gobble}
@@ -142,7 +113,8 @@
 
 }{
 \pagebreak
-\bibliographystyle{plain}
+\bibliographystyle{ieeetr}
+\renewcommand{\refname}{References}
 \bibliography{references}{}
 \oldenddocument
 }

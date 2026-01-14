@@ -28,7 +28,13 @@ Your dissertation/project report should begin by defining the work, along with i
 
 \department{Department of Typesetting}
 
-\supervisor{Doctor}{Supervisor}{Assistant Professor}{Iscte - Instituto Universitário de Lisboa}
+\supervisors{
+	Ph.D. Professor Alice, Assistant Professor,\\
+	Iscte - Instituto Universitário de Lisboa
+	~\\~\\
+	Ph.D. Professor Bob, Assistant Professor,\\
+	Iscte - Instituto Universitário de Lisboa
+}
 
 \date{Month}{Year}
 
@@ -87,11 +93,15 @@ Your project proposal should begin by defining information on the author and the
 
 \program{Doctoral Programme in Information Science and Technology}
 
-\date{Lisboa}{Month}{Day}{Year}
+\supervisors{
+	Ph.D. Professor Alice, Assistant Professor,\\
+	Iscte - Instituto Universitário de Lisboa
+	~\\~\\
+	Ph.D. Professor Bob, Assistant Professor,\\
+	Iscte - Instituto Universitário de Lisboa
+}
 
-\supervisor{Doctor}{Supervisor}{Assistant Professor}{Iscte - Instituto Universitário de Lisboa}
-
-\candidate {Your Full Name}
+\candidate{Your Full Name}
 ```
 
 The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibTeX. The [PHD Research Project Proposal](PHD%20Research%20Project%20Proposal) folder contains a sample project with a pre-structured file that you only need to fill out, including the sections which are required by the project proposal guidelines.
@@ -125,24 +135,21 @@ Your thesis should begin by defining information on the thesis, namely, its titl
 \department{Department of Typesetting}
 
 \supervisors{
-Doctor Professor 1, Assistant Professor,\\
-Iscte - Instituto Universitário de Lisboa
-~\\~\\
-Doctor Professor 2, Assistant Professor,\\
-Iscte - Instituto Universitário de Lisboa
-~\\~\\
-Doctor Professor 3, Assistant Professor,\\
-Iscte - Instituto Universitário de Lisboa
+	Ph.D. Professor Alice, Assistant Professor,\\
+	Iscte - Instituto Universitário de Lisboa
+	~\\~\\
+	Ph.D. Professor Bob, Assistant Professor,\\
+	Iscte - Instituto Universitário de Lisboa
 }
 
 \jury{
-Title Name, Category, Institution
-~\\~\\
-Title Name, Category, Institution
-~\\~\\
-Title Name, Category, Institution
-~\\~\\
-Title Name, Category, Institution
+	Title Name, Category, Institution
+	~\\~\\
+	Title Name, Category, Institution
+	~\\~\\
+	Title Name, Category, Institution
+	~\\~\\
+	Title Name, Category, Institution
 }
 
 % Submission Date (Month, Year)
