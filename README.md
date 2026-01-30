@@ -63,7 +63,7 @@ Additionally, you should include an abstract and keywords, remembering to add a 
 { Keywords, separated, by, commas }
 ```
 
-The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibTeX. The [ISTA Master's Dissertation](ISTA%20Master's%20Dissertation) folder contains a sample project you can use with [Overleaf](https://www.overleaf.com/) (where it was made!) or similar LaTeX development environments. It contains a pre-structured file with some example content on how to use LaTeX.
+The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibLaTeX. The [ISTA Master's Dissertation](ISTA%20Master's%20Dissertation) folder contains a sample project you can use with [Overleaf](https://www.overleaf.com/) (where it was made!) or similar LaTeX development environments. It contains a pre-structured file with some example content on how to use LaTeX.
 
 <details>
 <summary><b>Notes on Compiling Locally</b></summary>
@@ -104,7 +104,7 @@ Your project proposal should begin by defining information on the author and the
 \candidate{Your Full Name}
 ```
 
-The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibTeX. The [PHD Research Project Proposal](PHD%20Research%20Project%20Proposal) folder contains a sample project with a pre-structured file that you only need to fill out, including the sections which are required by the project proposal guidelines.
+The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibLaTeX. The [PHD Research Project Proposal](PHD%20Research%20Project%20Proposal) folder contains a sample project with a pre-structured file that you only need to fill out, including the sections which are required by the project proposal guidelines.
 
 <br>
 
@@ -156,4 +156,4 @@ Your thesis should begin by defining information on the thesis, namely, its titl
 \date{Month}{Year}
 ```
 
-The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibTeX. As with the previous templates, the [PhD Thesis](PhD%20Thesis) folder contains an example file.
+The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibLaTeX. As with the previous templates, the [PhD Thesis](PhD%20Thesis) folder contains an example file.

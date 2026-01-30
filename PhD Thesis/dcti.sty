@@ -21,7 +21,18 @@
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
 \RequirePackage[printonlyused]{acronym}
-\RequirePackage{cite}
+
+\RequirePackage[
+    backend=biber,
+    style=ieee,
+    mincitenames=1,
+    maxcitenames=3, 
+    minbibnames=3,
+    maxbibnames=99,
+    uniquename=false,
+    uniquelist=false
+  ]{biblatex}
+
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 \RequirePackage{listings}
@@ -36,14 +47,7 @@
 \RequirePackage{algorithmicx}
 \RequirePackage{algpseudocode}
 \RequirePackage{csquotes}
-\RequirePackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    citecolor=black,
-    linkcolor=black,
-    filecolor=black,      
-    urlcolor=black,
-}
+\RequirePackage[hidelinks]{hyperref}
 %
 % you may need to uncomment the command below if you use eps format for figures
 %\RequirePackage{epstopdf}
@@ -406,7 +410,6 @@ Committee}{Jury}:
 \setcounter{page}{1}
 \pagenumbering{arabic}
 }{
-\bibliographystyle{ieeetr}
-\bibliography{references}{}
+\printbibliography[title={References}]
 \oldenddocument
 }

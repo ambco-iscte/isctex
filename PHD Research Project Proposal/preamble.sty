@@ -32,7 +32,18 @@
 \usepackage{etoolbox}
 \usepackage{csquotes}
 \usepackage[printonlyused]{acronym}
-\usepackage{cite}
+
+\RequirePackage[
+    backend=biber,
+    style=ieee,
+    mincitenames=1,
+    maxcitenames=3, 
+    minbibnames=3,
+    maxbibnames=99,
+    uniquename=false,
+    uniquelist=false
+  ]{biblatex}
+
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{listings}
@@ -113,8 +124,6 @@
 
 }{
 \pagebreak
-\bibliographystyle{ieeetr}
-\renewcommand{\refname}{References}
-\bibliography{references}{}
+\printbibliography[title={References}]
 \oldenddocument
 }
