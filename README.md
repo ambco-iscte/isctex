@@ -7,7 +7,7 @@
   <br><br>
 </div>
 
-# Master's Dissertation
+# 🎓 Master's Dissertation
 
 > [!NOTE]
 > Updated for [ISTA's Style Guidelines](https://www.iscte-iul.pt/conteudos/estudantes/informacao-academica/percurso-academico/area-mestrado/926/entrega-de-dissertacao-ou-trabalho-de-projeto) as of September 30th, 2025.
@@ -28,13 +28,17 @@ Your dissertation/project report should begin by defining the work, along with i
 
 \department{Department of Typesetting}
 
-\supervisors{
-	Ph.D. Professor Alice, Assistant Professor,\\
-	Iscte - Instituto Universitário de Lisboa
-	~\\~\\
-	Ph.D. Professor Bob, Assistant Professor,\\
-	Iscte - Instituto Universitário de Lisboa
-}
+\supervisor
+{Ph.D. Professor Alice, Assistant Professor}
+{Iscte - Instituto Universitário de Lisboa}
+
+\supervisor
+{Ph.D. Professor Bob, Assistant Professor}
+{Iscte - Instituto Universitário de Lisboa}
+
+\supervisor
+{Ph.D. Professor Mallory, Assistant Professor}
+{Iscte - Instituto Universitário de Lisboa}
 
 \date{Month}{Year}
 
@@ -80,35 +84,7 @@ doing `tlmgr install scheme-full` if you're having issues with the compilation.<
 
 <br>
 
-# Research Project Proposal
-
-> [!NOTE]
-> Updated for the [Information Science and Technology PhD Research Project Proposal](https://www.iscte-iul.pt/assets/files/2022/08/03/1659547576152_Modelo_de_Projeto_de_Investiga__o_PhD_DCTI.pdf) MS Word template as of July 15th, 2024.
-
-This LaTeX template is for the Research Project Proposal form required to apply to the [PhD Program in Information Science and Technology](https://www.iscte-iul.pt/course/53/doctorate-degree-phd-in-information-science-and-technology/candidacy) at Iscte. As with the Master's dissertation template, non-work-related information such as LaTeX package configurations is stored in a separate file to facilitate the writing of the form proper. 
-
-Your project proposal should begin by defining information on the author and the supervisor(s), along with the project's title and the program for which you are applying. The following is an example.
-```tex
-\title{The Title of Your Project}
-
-\program{Doctoral Programme in Information Science and Technology}
-
-\supervisors{
-	Ph.D. Professor Alice, Assistant Professor,\\
-	Iscte - Instituto Universitário de Lisboa
-	~\\~\\
-	Ph.D. Professor Bob, Assistant Professor,\\
-	Iscte - Instituto Universitário de Lisboa
-}
-
-\candidate{Your Full Name}
-```
-
-The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibLaTeX. The [PHD Research Project Proposal](PHD%20Research%20Project%20Proposal) folder contains a sample project with a pre-structured file that you only need to fill out, including the sections which are required by the project proposal guidelines.
-
-<br>
-
-# PhD Thesis
+# 🎓 PhD Thesis
 
 This LaTeX template is for your PhD Thesis, or for the yearly reports for the same doctoral programme at Iscte. As with the previous templates, non-work-related information such as LaTeX package configurations is stored in a separate file.
 
@@ -134,26 +110,72 @@ Your thesis should begin by defining information on the thesis, namely, its titl
 
 \department{Department of Typesetting}
 
-\supervisors{
-	Ph.D. Professor Alice, Assistant Professor,\\
-	Iscte - Instituto Universitário de Lisboa
-	~\\~\\
-	Ph.D. Professor Bob, Assistant Professor,\\
-	Iscte - Instituto Universitário de Lisboa
-}
 
-\jury{
-	Title Name, Category, Institution
-	~\\~\\
-	Title Name, Category, Institution
-	~\\~\\
-	Title Name, Category, Institution
-	~\\~\\
-	Title Name, Category, Institution
-}
+\supervisor
+{Ph.D. Professor Alice, Assistant Professor}
+{Iscte - Instituto Universitário de Lisboa}
+
+\supervisor
+{Ph.D. Professor Bob, Assistant Professor}
+{Iscte - Instituto Universitário de Lisboa}
+
+\supervisor
+{Ph.D. Professor Mallory, Assistant Professor}
+{Iscte - Instituto Universitário de Lisboa}
+
+
+\jury
+{Ph.D. Professor John}
+{Iscte - Instituto Universitário de Lisboa}
+
+\jury
+{Ph.D. Professor Alice}
+{Iscte - Instituto Universitário de Lisboa}
+
+\jury
+{Ph.D. Professor Jane}
+{Iscte - Instituto Universitário de Lisboa}
+
+\jury
+{Ph.D. Professor Doe}
+{Anonymous University, Department of ???, Typesetting Research Center}
+
 
 % Submission Date (Month, Year)
 \date{Month}{Year}
 ```
 
 The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibLaTeX. As with the previous templates, the [PhD Thesis](PhD%20Thesis) folder contains an example file.
+
+<br>
+
+# 🎓 Research Project Proposal
+
+> [!NOTE]
+> Updated for the [Information Science and Technology PhD Research Project Proposal](https://www.iscte-iul.pt/assets/files/2022/08/03/1659547576152_Modelo_de_Projeto_de_Investiga__o_PhD_DCTI.pdf) MS Word template as of July 15th, 2024.
+
+This LaTeX template is for the Research Project Proposal form required to apply to the [PhD Program in Information Science and Technology](https://www.iscte-iul.pt/course/53/doctorate-degree-phd-in-information-science-and-technology/candidacy) at Iscte. As with the Master's dissertation template, non-work-related information such as LaTeX package configurations is stored in a separate file to facilitate the writing of the form proper. 
+
+Your project proposal should begin by defining information on the author and the supervisor(s), along with the project's title and the program for which you are applying. The following is an example.
+```tex
+\title{The Title of Your Project}
+
+\program{Doctoral Programme in Information Science and Technology}
+
+\supervisor
+{Ph.D. Professor Alice, Assistant Professor}
+{Iscte - Instituto Universitário de Lisboa}
+
+\supervisor
+{Ph.D. Professor Bob, Assistant Professor}
+{Iscte - Instituto Universitário de Lisboa}
+
+\supervisor
+{Ph.D. Professor Mallory, Assistant Professor}
+{Iscte - Instituto Universitário de Lisboa}
+
+\candidate{Your Full Name}
+```
+
+The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibLaTeX. The [PHD Research Project Proposal](PHD%20Research%20Project%20Proposal) folder contains a sample project with a pre-structured file that you only need to fill out, including the sections which are required by the project proposal guidelines.
+

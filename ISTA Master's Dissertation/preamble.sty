@@ -226,9 +226,18 @@
 
 \newcommand{\program}[1]{\gdef\theprogram{#1}}
 
-\newcommand{\supervisors}[1]{
-    \gdef\thesupervisors{#1}
+% SUPERVISORS
+% ========================================================
+\newcounter{numsupervisors}
+\newcommand{\supervisor}[2]{
+    \ifdef\thesupervisors{
+        \edef\thesupervisors{\thesupervisors{}~\\~\\#1,\\#2}
+    }{ % else
+        \gdef\thesupervisors{#1,\\#2}
+    }
+    \stepcounter{numsupervisors}
 }
+% ========================================================
 
 \newcommand{\acknowledgements}[1]{\gdef\theacknowledgements{#1}}
 
@@ -272,7 +281,12 @@
 ~\\
 ~\\
 ~\\
-Supervisor(s):\\
+\ifnum\value{numsupervisors}=1
+    Supervisor:
+\else
+    Supervisors:
+\fi
+~\\
 ~\\
 \thesupervisors
 ~\\
@@ -304,7 +318,12 @@ Supervisor(s):\\
 ~\\
 ~\\
 ~\\
-Supervisor(s):\\
+\ifnum\value{numsupervisors}=1
+    Supervisor:
+\else
+    Supervisors:
+\fi
+~\\
 ~\\
 \thesupervisors
 ~\\

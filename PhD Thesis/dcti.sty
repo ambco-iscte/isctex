@@ -230,9 +230,29 @@
     \gdef\thespecialty{#2}
 }
 
-\newcommand{\supervisors}[1]{\gdef\thesupervisors{#1}}
+% SUPERVISORS
+% ========================================================
+\newcounter{numsupervisors}
+\newcommand{\supervisor}[2]{
+    \ifdef\thesupervisors{
+        \edef\thesupervisors{\thesupervisors{}~\\~\\#1,\\#2}
+    }{ % else
+        \gdef\thesupervisors{#1,\\#2}
+    }
+    \stepcounter{numsupervisors}
+}
+% ========================================================
 
-\newcommand{\jury}[1]{\gdef\thejury{#1}}
+% JURY / THESIS MONITORING COMMITTEE
+% ========================================================
+\newcommand{\jury}[2]{
+    \ifdef\thejury{
+        \edef\thejury{\thejury{}~\\~\\#1,\\#2}
+    }{ % else
+        \gdef\thejury{#1,\\#2}
+    }
+}
+% ========================================================
 
 \newcommand{\acknowledgements}[1]{\gdef\theacknowledgements{#1}}
 
@@ -285,7 +305,11 @@ PhD in \textit{\theprogram},\\In the Specialty of \textit{\thespecialty}\\
 ~\\
 ~\\
 ~\\
-Supervisor(s):
+\ifnum\value{numsupervisors}=1
+    Supervisor:
+\else
+    Supervisors:
+\fi
 ~\\
 ~\\
 \thesupervisors
@@ -319,9 +343,7 @@ Supervisor(s):
 \theauthor\\
 ~\\
 ~\\
-~\\
 PhD in \textit{\theprogram},\\In the Specialty of \textit{\thespecialty}\\
-~\\
 ~\\
 ~\\
 \ifdef\isreport{Thesis Monitoring 

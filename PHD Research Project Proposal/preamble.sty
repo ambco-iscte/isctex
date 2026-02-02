@@ -70,9 +70,20 @@
 
 \renewcommand{\title}[1]{\gdef\thetitle{#1}}
 
-\newcommand{\supervisors}[1]{
-    \gdef\thesupervisors{#1}
+% SUPERVISORS
+% ========================================================
+\newcounter{numsupervisors}
+\newcommand{\supervisor}[2]{
+    \ifdef\thesupervisors{
+        \edef\thesupervisors{
+            \thesupervisors{}~\\\centerline{#1,}\\\centerline{#2}
+        }
+    }{ % else
+        \gdef\thesupervisors{\centerline{#1,}\centerline{#2}}
+    }
+    \stepcounter{numsupervisors}
 }
+% ========================================================
 
 \newcommand{\candidate}[1]{\gdef\thecandidate{#1}}
 
@@ -99,8 +110,12 @@
 \noindent\textbf{\thetitle}
 
 \vspace{50pt}\hfill
-    
-\noindent\textbf{\textsc{Supervisor(s):}}
+
+\ifnum\value{numsupervisors}=1
+    \noindent\textbf{\textsc{Supervisor:}}
+\else
+    \noindent\textbf{\textsc{Supervisors:}}
+\fi
 
 \thesupervisors
 
