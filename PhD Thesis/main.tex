@@ -1,9 +1,5 @@
 \documentclass[12pt,reqno,twoside]{amsbook}
-
-% Use this for your final thesis document. 
-\usepackage{dcti}
-% Use this instead for your yearly PhD reports.
-%\usepackage[report]{dcti}
+\usepackage{thesis} % \usepackage[report]{thesis}
 
 % References File(s)
 \addbibresource{references.bib}
@@ -61,11 +57,11 @@
 
 \jury
 {Ph.D. Professor Doe}
-{Anonymous University, Department of ???, Typesetting Research Center}
+{Iscte - Instituto Universitário de Lisboa}
 % ======================================================================
 
 % Submission Date (Month, Year)
-\date{Month}{Year}
+\date{January}{2026}
 
 % Acknowledgements -- Optional if no grants or fundings need to be listed.
 \acknowledgements{
@@ -106,22 +102,24 @@
 %                           RESUMO + ABSTRACT
 % =====================================================================
 % Resumo, em Português
-\resumo
-{
-Escreva aqui o resumo em Português. Existe um limite de 250 palavras. A tese deverá ter um Resumo em português e um em inglês (Abstract), contudo poderá também ter em outros idiomas, para além destes dois.
-}
-{
-Palavras-chave; separadas; por; ponto-e-vírgula (de 3 a 6 palavras-chave)
-}
+\begin{resumo}
+Escreva aqui o resumo em Português. Existe um limite de 250 palavras. A tese deverá ter um Resumo em português e um em inglês (Abstract), contudo poderá também ter em outros idiomas, para além destes dois. 
 
-% Abstract
-\abstract
-{
+\keyword{Palavras-chave}
+\keyword{separadas}
+\keyword{por}
+\keyword{vírgulas}
+\end{resumo}
+
+% Abstract, in English
+\begin{abstract}
 Write here the abstract in English. There is a 250 word limit. Your thesis should have an abstract in English and one in Portuguese (Resumo), however, it may have additional abstracts in other languages.
-}
-{
-Keywords; separated; by; semicolons (3 to 6 keywords)
-}
+
+\keyword{Keywords}
+\keyword{separated}
+\keyword{by}
+\keyword{commas}
+\end{abstract}
 % =====================================================================
 
 
@@ -137,7 +135,6 @@ Keywords; separated; by; semicolons (3 to 6 keywords)
 %                               MAIN BODY
 % =====================================================================
 \begin{document}
-
 \chapter{Introduction}\label{ch:introduction}
 The thesis should be between 150 and 200 pages (maximum) from the beginning of the Introduction to the end of the Conclusions.
 

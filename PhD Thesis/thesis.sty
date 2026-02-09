@@ -1,0 +1,749 @@
+\ProvidesPackage{thesis}
+
+\DeclareOption{report}{\gdef\isreport{}}
+\ProcessOptions\relax
+
+% =================================================================
+% =================================================================
+% =================================================================
+% =================================================================
+% =================================================================
+%
+% Hey! Don't mess with this file unless you know what you're doing!
+%
+% =================================================================
+% =================================================================
+% =================================================================
+% =================================================================
+% =================================================================
+
+
+% =================================================================
+% PACKAGE DEFINITIONS
+% =================================================================
+\RequirePackage{eurosym}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage[onehalfspacing]{setspace}
+\RequirePackage{chngcntr}
+\RequirePackage{graphicx}
+\RequirePackage[a4paper, margin=2.5cm]{geometry}
+\RequirePackage[english]{babel}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage[printonlyused]{acronym}
+\RequirePackage[
+    backend=biber,
+    style=ieee,
+    mincitenames=1,
+    maxcitenames=3, 
+    minbibnames=3,
+    maxbibnames=99,
+    uniquename=false,
+    uniquelist=false
+]{biblatex}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{listings}
+\RequirePackage{booktabs}
+\RequirePackage{microtype} 
+\RequirePackage{xcolor}
+\RequirePackage{url}
+\RequirePackage{tipa}
+\RequirePackage{bigfoot}
+\RequirePackage{minted}
+\RequirePackage{algorithm}
+\RequirePackage{algorithmicx}
+\RequirePackage{algpseudocode}
+\RequirePackage{csquotes}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{environ}
+\RequirePackage{xstring}
+\RequirePackage[useregional]{datetime2}
+
+% =================================================================
+% FORMAT SECTIONS TITLE STYLE
+% =================================================================
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\subsubsection}
+{0pt}{2.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+    \def\section{\@startsection{section}{1}%
+      \z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
+      {\normalfont\bfseries\flushleft}}
+      
+    \def\subsection{\@startsection{subsection}{2}%
+      \z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
+      {\normalfont\bfseries\flushleft}}
+
+    \def\subsubsection{\@startsection{subsubsection}{3}%
+      \z@{.5\linespacing\@plus.7\linespacing}{.1\linespacing}%
+      {\normalfont\itshape}}
+
+    \let\@afterindenttrue\@afterindentfalse
+\makeatother
+
+% =================================================================
+% MATRICES DISPLAY UP TO 10 COLUMNS
+% =================================================================
+\setcounter{MaxMatrixCols}{10}
+
+% =================================================================
+% THEOREMS AND OTHER ENVIRONMENTS
+% =================================================================
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+\theoremstyle{plain}
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{axiom}{Axiom}[chapter]
+\newtheorem{case}{Case}[chapter]
+\newtheorem{claim}{Claim}[chapter]
+\newtheorem{conclusion}{Conclusion}[chapter]
+\newtheorem{condition}{Condition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{criterion}{Criterion}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{exercise}{Exercise}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{notation}{Notation}[chapter]
+\newtheorem{problem}{Problem}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{remark}{Remark}[chapter]
+\newtheorem{solution}{Solution}[chapter]
+\newtheorem{summary}{Summary}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+\numberwithin{equation}{chapter}
+
+% =================================================================
+% FONT SIZE
+% =================================================================
+\makeatletter
+\newcommand\frontFont{\@setfontsize\frontFont{14}{14}}
+\newcommand\numberprefix{}
+\def\numberline#1{\hb@xt@\@tempdima{\numberprefix #1\hfil}}
+
+% =================================================================
+% LIST OF FIGURES AND TABLES FORMATTING
+% =================================================================
+\newcommand{\lofskip}[1]{\gdef\listOfFigures@LeftSpacing{#1}}
+\newcommand{\lotskip}[1]{\gdef\listOfTables@LeftSpacing{#1}}
+
+% List of Figures
+\def\l@figure#1#2{\@tocline{0}{3pt plus2pt}{0pt}{\ifdef\listOfFiguresLeftSpacing{\listOfFigures@LeftSpacing}{6pc}}{}%
+  {\renewcommand\numberprefix{Figure~}#1}{#2}}
+
+% List of Tables
+\def\l@table#1#2{\@tocline{0}{3pt plus2pt}{0pt}{\ifdef\listOfTablesLeftSpacing{\listOfTables@LeftSpacing}{6pc}}{}%
+  {\renewcommand\numberprefix{Table~}#1}{#2}}
+\makeatother
+
+% =================================================================
+% COMMAND TO ALWAYS START CHAPTERS ON ODD PAGES
+% =================================================================
+\def\cleardoublepage{\clearpage\if@twoside%
+  \ifodd\c@page\else
+  \vspace*{\fill}
+  \hfill
+  \begin{center}
+  {\fontfamily{Montserrat-TOsF}\selectfont\small [ This page is intentionally left blank. ]}
+  
+  \end{center}
+  \vspace{\fill}
+  \thispagestyle{empty}
+  \newpage
+ \if@twocolumn\hbox{}\newpage\fi\fi\fi
+}
+\makeatother
+
+% =================================================================
+% DEDICATION ENVIRONMENT
+% =================================================================
+\newenvironment{dedicationenv}
+  {%\clearpage           % we want a new page
+   \thispagestyle{empty}% no header and footer
+   \vspace*{\stretch{1}}% some space at the top
+   %\itshape             % the text is in italics
+   \raggedleft          % flush to the right margin
+  }
+  {\par % end the paragraph
+   \vspace{\stretch{3}} % space at bottom is three times that at the top
+   %\clearpage           % finish off the page
+  }
+  \numberwithin{section}{chapter}
+\fancyhf{}
+\pagestyle{fancy}
+\fancyfoot[LE,RO]{\scriptsize\thepage}
+
+% =================================================================
+% PAGE NUMBER ON FOOTER, ALTERNATES LEFT AND RIGHT
+% =================================================================
+\makeatletter
+\def\ps@plain{\ps@empty
+ \def\@evenfoot{%
+   \normalfont\scriptsize
+   \rlap{\thepage}\hfil
+   }%
+ \def\@oddfoot{%
+   \normalfont\scriptsize\hfil
+   \llap{\thepage}
+   }%
+}
+\makeatother
+
+% =================================================================
+% DISABLE HEADER AND FOOTER RULERS
+% =================================================================
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% =================================================================
+% ISCTE OFFICIAL FONT IS MONTSERRAT
+% =================================================================
+\RequirePackage{montserrat}
+\RequirePackage[T1]{fontenc}
+\renewcommand*\oldstylenums[1]{{\fontfamily{Montserrat-TOsF}\selectfont #1}}
+
+% =================================================================
+% TABLES AND FIGURES ARE NUMBERED WITHIN THE CHAPTER THEY APPEAR IN
+% =================================================================
+\numberwithin{table}{chapter}
+\numberwithin{figure}{chapter}
+
+% =================================================================
+% PARAGRAPHS HAVE AN INDENTATION OF 0.7CM
+% =================================================================
+\setlength{\parindent}{0.7cm}
+
+% =================================================================
+% REFERENCES SECTION TITLE
+% =================================================================
+\addto{\extrasenglish}{%
+  \renewcommand{\bibname}{References}
+}
+
+\let\olddocument=\document
+\let\oldenddocument=\enddocument
+
+\makeatletter
+\def\l@subsection{\@tocline{2}{0pt}{2.5pc}{5pc}{}}
+\makeatother
+
+% =================================================================
+% THESIS TITLE, DATE, AUTHOR, DEPARTMENT, AND PROGRAM
+% =================================================================
+\renewcommand{\title}[1]{\gdef\thetitle{#1}}
+
+\renewcommand{\date}[2]{
+    \gdef\thedate{#1, #2}
+    \gdef\themonth{#1}
+    \gdef\theyear{#2}
+}
+
+\newcommand{\dateorinvalid}[3]{ % month, year, error (1 | 0)
+    \IfInteger{#2}{
+        \DTMsavenow{now}
+        \ifnum\number#2<\DTMfetchyear{now}
+            \ifnum#3=1\PackageError{Thesis}{Invalid year "#2". You can't publish a thesis in the past! The year must be at least \DTMfetchyear{now}}{}\else\fi
+            {\color{red}\textbf{\textsc{Error:} Invalid Date}} 
+        \else
+            \IfStrEqCase{#1}{
+                {January}{#1, #2}
+                {February}{#1, #2}
+                {March}{#1, #2}
+                {April}{#1, #2}
+                {May}{#1, #2}
+                {June}{#1, #2}
+                {July}{#1, #2}
+                {August}{#1, #2}
+                {September}{#1, #2}
+                {October}{#1, #2}
+                {November}{#1, #2}
+                {December}{#1, #2}}
+                [
+                    \ifnum#3=1\PackageError{Thesis}{Invalid month "#1". Should be one of: January, February, March, April, May, June, July, August, September, October, November, December (case-sensitive)}{}\else\fi
+                    {\color{red}\textbf{\textsc{Error:} Invalid Date}}
+                ]
+        \fi
+    }{
+        \ifnum#3=1\PackageError{Thesis}{Year "#2" is not an integer}{}\else\fi
+        {\color{red}\textbf{\textsc{Error:} Invalid Date}}
+    }
+}
+
+\renewcommand{\author}[1]{\gdef\theauthor{#1}}
+
+\newcommand{\department}[1]{\gdef\thedepartment{#1}}
+
+\newcommand{\program}[2]{
+    \gdef\theprogram{#1}
+    \gdef\thespecialty{#2}
+}
+
+% =================================================================
+% SUPERVISORS
+% =================================================================
+\newcounter{numsupervisors}
+\newcommand{\supervisor}[2]{
+    \stepcounter{numsupervisors}
+    \ifnum\value{numsupervisors}>3
+        \PackageError{Thesis}{You're trying to provide \arabic{numsupervisors} supervisors, which is not allowed. Your thesis can only have up to three supervisors: two from ISCTE-IUL, and one from another institution}{}
+    \else
+        \ifdef\thesupervisors{
+            \edef\thesupervisors{\thesupervisors{}~\\~\\#1,\\#2}
+        }{ % else
+            \gdef\thesupervisors{#1,\\#2}
+        }
+    \fi
+}
+
+% =================================================================
+% JURY / THESIS MONITORING COMMITTEE
+% =================================================================
+\newcounter{numjury}
+\newcommand{\jury}[2]{
+    \stepcounter{numjury}
+    \ifnum\value{numjury}>4
+        \PackageError{Thesis}{You're trying to provide \arabic{numjury} jury members, which is not allowed. The jury/supervising committee must have exactly four members: the PhD programme director, one of your supervisors, a professor from ISCTE, and a professor from another institution}{}
+    \else
+        \ifdef\thejury{
+            \edef\thejury{\thejury{}~\\~\\#1,\\#2}
+        }{ % else
+            \gdef\thejury{#1,\\#2}
+        }
+    \fi
+}
+% ========================================================
+
+\newcommand{\acknowledgements}[1]{\gdef\theacknowledgements{#1}}
+
+\newcommand{\dedication}[1]{\gdef\thededication{#1}}
+
+% =================================================================
+
+% =================================================================
+% HEURISTIC "WORD COUNT" (SPACE-SEPARATED TOKENS)
+% =================================================================
+\newcommand{\wordcount}[2][]{
+    \makeatletter
+        \expandarg
+        \StrCount{#2}{ }[\wc@spaces]
+        \edef#1{\number\numexpr\wc@spaces+1\relax}
+    \makeatother
+}
+
+% =================================================================
+% RESUMO, ABSTRACT, AND KEYWORDS
+% =================================================================
+\newcounter{numkeywordspt}
+\newcounter{numkeywords}
+
+\newtoggle{inResumo}\togglefalse{inResumo}
+\newtoggle{inAbstract}\togglefalse{inAbstract}
+
+\newcommand{\keyword}[1]{
+\iftoggle{inResumo}{
+    \noexpand\ifdef\noexpand\thekeywordspt
+    {\noexpand\xdef\noexpand\thekeywordspt{\noexpand\thekeywordspt, #1}}
+    {\noexpand\gdef\noexpand\thekeywordspt{#1}}
+    \noexpand\stepcounter{numkeywordspt}
+}{
+    \iftoggle{inAbstract}{
+        \noexpand\ifdef\noexpand\thekeywords
+        {\noexpand\xdef\noexpand\thekeywords{\noexpand\thekeywords, #1}}
+        {\noexpand\gdef\noexpand\thekeywords{#1}}
+        \noexpand\stepcounter{numkeywords}
+    }{
+        \PackageError{Thesis}{The keyword command can only be used inside the Resumo and Abstract environments}{}
+    }
+}
+}
+
+\NewEnviron{resumo}{
+    \iftoggle{inResumo}{
+        \PackageError{Thesis}{You can't define Resumo within another Resumo}{}
+    }{
+        \iftoggle{inAbstract}{
+            \PackageError{Thesis}{You can't define Resumo within the Abstract}{}
+        }{
+            \ifdef\abstractptdefined{
+                \PackageError{Thesis}{The Resumo environment may only be used once}{}
+            }{
+                \toggletrue{inResumo}
+                \xdef\theabstractpt{\BODY}
+
+                \begingroup
+                    \wordcount[\wcnt]{\BODY} 
+                    \xdef\resumowordcount{\wcnt}
+                \endgroup
+
+                \gdef\abstractptdefined{}
+            }
+        }
+    }
+}[\togglefalse{inResumo}]
+
+\RenewEnviron{abstract}{
+    \iftoggle{inResumo}{
+        \PackageError{Thesis}{You can't define the Abstract inside the Resumo}{}
+    }{
+        \iftoggle{inAbstract}{
+            \PackageError{Thesis}{You can't define an Abstract within another Abstract}{}
+        }{
+            \ifdef\abstractdefined{
+                \PackageError{Thesis}{The Abstract environment may only be used once}{}
+            }{
+                \toggletrue{inAbstract}
+                \xdef\theabstract{\BODY}
+
+                \begingroup
+                    \wordcount[\wcnt]{\BODY} 
+                    \xdef\abstractwordcount{\wcnt}
+                \endgroup
+                
+                \gdef\abstractdefined{}
+            }
+        }
+    }
+}[\togglefalse{inAbstract}]
+
+% =================================================================
+% DISPLAY "WAS" OR "WERE" ACCORDING TO COUNTER VALUE
+% =================================================================
+\newcommand{\waswere}[1]{
+\ifnum\value{#1}>1
+    were
+\else
+    \ifnum\value{#1}=0
+        were
+    \else
+        was
+    \fi
+\fi
+}
+
+% =================================================================
+
+\newcommand{\acronyms}[1]{\gdef\theacronyms{#1}}
+
+% =================================================================
+
+\definecolor{ISCTEDarkBlue}{rgb}{0,0.08,0.45}
+
+\renewenvironment{document}{\olddocument
+
+% =================================================================
+% COVER PAGE
+% =================================================================
+\sffamily
+\frontFont
+\begin{flushleft}
+\includegraphics[width=6.03cm]{images/iscte.png}\\[3.3mm]
+
+{\color{ISCTEDarkBlue}\hrulefill}
+~\\
+~\\
+~\\
+\ifdef\thetitle{
+\ifdef\isreport{
+\textbf{\thetitle}\\
+~\\
+\theyear\space Progress Report
+~\\
+}{
+\textbf{\thetitle}
+}
+}{
+    \PackageError{Thesis}{Your thesis needs a title. Define one using the title command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Title}}
+}~\\
+~\\
+~\\
+~\\
+\ifdef\theauthor{
+\theauthor
+}{
+\PackageError{Thesis}{Your thesis needs your name. Define one using the author command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Author}}
+}\\
+~\\
+~\\
+~\\
+~\\
+PhD in \ifdef\theprogram{\textit{\theprogram}}{
+\PackageError{Thesis}{Your thesis needs a PhD program name. Define one using the program command}{}
+{\color{red}\textbf{\textsc{Error:} Undefined Programme}}
+}\ifdef\thespecialty{
+,\\In the Specialty of \textit{\thespecialty}\\
+}{}
+~\\
+~\\
+~\\
+~\\
+\ifnum\value{numsupervisors}=1
+    Supervisor:
+    ~\\
+    ~\\
+    \thesupervisors
+\else
+    \ifnum\value{numsupervisors}<1
+        \PackageError{Thesis}{Your thesis must have at least one supervisor, but you did not provide any}{}
+        ~\\
+        ~\\
+        {\color{red}\textbf{\textsc{Error:} Thesis needs at least 1 supervisor, but none were provided}}
+    \else
+        \ifnum\value{numsupervisors}>3
+            ~\\
+            ~\\
+            {\color{red}\textbf{\textsc{Error:} Thesis can only have up to 3 supervisors (inclusive), but \arabic{numsupervisors} \waswere{numsupervisors} provided}}
+        \else
+            Supervisors:
+            ~\\
+            ~\\
+            \thesupervisors
+        \fi
+    \fi
+\fi
+~\\
+\vfill\ifdef\thedate{
+\dateorinvalid\themonth\theyear1
+}{
+\PackageError{Thesis}{Your thesis needs a date. Define one using the date command}{}
+{\color{red}\textbf{\textsc{Error:} Undefined Date}}
+}
+\end{flushleft}
+\thispagestyle{empty}
+\cleardoublepage
+
+% =================================================================
+% SECOND COVER PAGE (WITH DEPARTMENT NAME AND JURY)
+% =================================================================
+\begin{flushleft}
+  \includegraphics[width=6.03cm]{images/ista.png}\\[7mm]
+
+{\color{ISCTEDarkBlue}\hrulefill}
+~\\
+~\\
+~\\
+\ifdef\thedepartment{
+\thedepartment
+}{
+    \PackageError{Thesis}{Your thesis needs a department name. Define one using the department command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Department}}
+}
+~\\
+~\\
+~\\
+\ifdef\thetitle{
+\ifdef\isreport{
+\textbf{\thetitle}\\
+~\\
+\theyear\space Progress Report
+~\\
+}{
+\textbf{\thetitle}
+}
+}{
+    \PackageError{Thesis}{Your thesis needs a title. Define one using the title command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Title}}
+}
+~\\
+~\\
+~\\
+\ifdef\theauthor{
+\theauthor
+}{
+\PackageError{Thesis}{Your thesis needs your name! Define one using the title command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Author}}
+}\\
+~\\
+~\\
+PhD in \ifdef\theprogram{\textit{\theprogram}}{
+\PackageError{Thesis}{Your thesis needs a PhD program name. Define one using the program command}{}
+{\color{red}\textbf{\textsc{Error:} Undefined Programme}}
+}\ifdef\thespecialty{
+,\\In the Specialty of \textit{\thespecialty}\\
+}{}
+~\\
+~\\
+\ifdef\isreport{Thesis Monitoring 
+Committee}{Jury}:
+\ifnum\value{numjury}=4
+    ~\\
+    ~\\
+    \thejury
+\else
+    \ifnum\value{numjury}>4
+    \else
+        \PackageError{Thesis}{The jury/supervising committee must have exactly four members: the PhD programme director, one of your supervisors, a professor from ISCTE, and a professor from another institution. Only \arabic{numjury} jury members \waswere{numsupervisors} provided}{}
+    \fi
+    ~\\
+    ~\\
+    {\color{red}\textbf{\textsc{Error:} Jury must have 4 members, but \arabic{numjury} \waswere{numsupervisors} provided}}
+\fi
+~\\
+\vfill\ifdef\thedate{
+\dateorinvalid\themonth\theyear0
+}{
+\PackageError{Thesis}{Your thesis needs a date. Define one using the date command}{}
+{\color{red}\textbf{\textsc{Error:} Undefined Date}}
+}
+\end{flushleft}
+\thispagestyle{empty}
+\rmfamily
+\normalsize
+\frontmatter
+\thispagestyle{empty}
+
+\frontmatter
+\addtocontents{toc}{\setcounter{tocdepth}{2}}
+\thispagestyle{empty}
+
+% =================================================================
+% ISCTE COPYRIGHT NOTICE (NOT VISIBLE IN YEARLY REPORTS)
+% =================================================================
+\ifdef\isreport{}{
+\noindent\textbf{Direitos de C\'{o}pia / Copyright}
+
+\noindent \textcopyright\space Copyright: \theauthor.\\
+
+\noindent O Iscte - Instituto Universit\'{a}rio de Lisboa (ISCTE-IUL) tem o direito, perp\'{e}tuo e sem limites geogr\'{a}ficos, de arquivar e publicitar este trabalho atrav\'{e}s de exemplares impressos reproduzidos em papel ou de forma digital, ou por qualquer outro meio conhecido ou que venha a ser inventado, de o divulgar atrav\'{e}s de reposit\'{o}rios cient\'{i}ficos e de admitir a sua c\'{o}pia e distribuição com objetivos educacionais ou de investiga\c{c}\~{a}o, n\~{a}o comerciais, desde que seja dado cr\'{e}dito ao autor e editor.\\
+
+\noindent Iscte - Instituto Universit\'{a}rio de Lisboa (ISCTE-IUL) reserves the right, in perpetuity and without geographical limitations, to archive and publish this work through printed copies reproduced on paper or digitally, or by any other means, known or which come to be invented, of disseminating the work through scientific repositories and to allow for its copying and distribution for non-commercial educational or research purposes, as long as credit is given to the author and editor.
+
+\thispagestyle{empty}
+
+\frontmatter
+\thispagestyle{empty}
+
+% =================================================================
+% DEDICATION PAGE
+% =================================================================
+\ifdef\thededication
+{
+    \begin{dedicationenv}%
+    \begin{flushright}
+    \thededication
+    \end{flushright}%
+    \end{dedicationenv}
+}
+}
+
+% =================================================================
+% ACKNOWLEDGEMENTS PAGE
+% =================================================================
+\ifdef\isreport{}{
+\setcounter{page}{1}
+\pagenumbering{roman} %
+\ifdef\theacknowledgements
+{
+    \chapter*{Acknowledgments}
+    \setcounter{page}{1}
+    \theacknowledgements
+}}
+
+% =================================================================
+% RESUMO
+% =================================================================
+\chapter*{Resumo}
+\ifdef\theabstractpt{
+\theabstractpt
+
+% Number of words, roughly
+\edef\cnt{\number\numexpr\resumowordcount-\value{numkeywordspt}\relax}
+                    
+\ifnum\cnt>250
+    \PackageError{Thesis}{Your Resumo has too many words. The limit is 250, but you have written \cnt}{}
+\else\fi
+
+}{
+    \PackageError{Thesis}{Your thesis must have an Abstract in Portuguese (Resumo)}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Abstract}}
+}
+
+\vspace{3ex}
+\ifdef\thekeywordspt{ % Check between 3 and 6 keywords
+    \ifnum\value{numkeywordspt}<3
+        \PackageError{Thesis}{Your thesis must have 3 to 6 keywords in Portuguese, but only \arabic{numkeywordspt} \waswere{numkeywordspt} provided}{}
+    \else
+        \ifnum\value{numkeywordspt}>6
+            \PackageError{Thesis}{Your thesis must have 3 to 6 keywords in Portuguese, but \arabic{numkeywordspt} \waswere{numkeywordspt} provided.}{}
+        \else\fi
+    \fi
+    \noindent\textbf{Palavras-Chave:} \textit{\thekeywordspt}
+}{
+\PackageError{Thesis}{Your thesis must have 3 to 6 keywords in Portuguese, but \arabic{numkeywordspt} \waswere{numkeywordspt} provided}{}
+\noindent\textbf{Palavras-Chave:} {\color{red}\textbf{\textsc{Error:} Undefined Keywords}}
+}
+
+% =================================================================
+% ABSTRACT
+% =================================================================
+\chapter*{Abstract}
+\ifdef\theabstract{
+\theabstract
+
+% Number of words, roughly
+\edef\cnt{\number\numexpr\abstractwordcount-\value{numkeywordspt}\relax}
+                    
+\ifnum\cnt>250
+    \PackageError{Thesis}{Your Abstract has too many words. The limit is 250, but you have written \cnt}{}
+\else\fi
+
+}{
+    \PackageError{Thesis}{Your thesis must have an Abstract in English}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Abstract}}
+}
+
+\vspace{3ex}
+\ifdef\thekeywords{ % Check between 3 and 6 keywords
+    \ifnum\value{numkeywords}<3
+        \PackageError{Thesis}{Your thesis must have 3 to 6 keywords in English, but only \arabic{numkeywords} \waswere{numkeywords} provided}{}
+    \else
+        \ifnum\value{numkeywords}>6
+            \PackageError{Thesis}{Your thesis must have 3 to 6 keywords in English, but \arabic{numkeywords} \waswere{numkeywords} provided}{}
+        \else\fi
+    \fi
+    \noindent\textbf{Keywords:} \textit{\thekeywords}
+}{
+\noindent\textbf{Keywords:} {\color{red}\textbf{\textsc{Error:} Undefined Keywords}}
+}
+
+% Check same number of Portuguese and English keywords
+\ifnum\value{numkeywordspt}=\value{numkeywords}\else
+    \PackageError{Thesis}{Portuguese and English keywords don't match. There are \arabic{numkeywordspt} Portuguese keywords and \arabic{numkeywords} English keywords}{}
+\fi
+
+% =================================================================
+% TABLE OF CONTENTS, LIST OF FIGURES, LIST OF TABLES, AND ACRONYMS
+% =================================================================
+\tableofcontents
+\listoffigures
+\listoftables
+\cleardoublepage
+\ifdef\theacronyms
+{
+    \chapter*{List of Acronyms}
+    \begin{acronym}
+    \theacronyms
+    \end{acronym}
+}
+
+% =================================================================
+% DOCUMENT BODY STARTS HERE
+% =================================================================
+\mainmatter
+
+\hyphenation{wri-te he-re pro-per hy-phe-ni-za-tion
+}%
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+}{
+\printbibliography[title={References}]
+\oldenddocument
+}
