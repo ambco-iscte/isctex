@@ -5,7 +5,7 @@
 </picture>
 
 
-### [**🎓 Master's Dissertation**](ISTA%20Master's%20Dissertation)
+### [**🎓 Master's Dissertation**](Master's%20Dissertation)
 
 Can be used for:
 - Master's in Computer Science and Engineering
@@ -20,7 +20,7 @@ Can be used for:
 - Doctoral Programme in Information Science and Technology
 
 
-### [**🎓 PhD Research Project Proposal**](PHD%20Research%20Project%20Proposal)
+### [**🎓 PhD Research Project Proposal**](Research%20Project%20Proposal)
 
 Can be used for:
 
