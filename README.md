@@ -4,7 +4,6 @@
   <img alt="ISCTE Tecnologias e Arquitetura LaTeX" src="Resources/isctex-dark.png">
 </picture>
 
-<br><br>
 
 ### [**🎓 Master's Dissertation**](ISTA%20Master's%20Dissertation)
 
@@ -27,7 +26,6 @@ Can be used for:
 
 - Doctoral Programme in Information Science and Technology
 
-<br>
 
 ---
 
