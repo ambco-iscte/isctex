@@ -1,7 +1,7 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="resources/isctex-white.png">
-  <source media="(prefers-color-scheme: light)" srcset="resources/isctex-dark.png">
-  <img alt="ISCTE Tecnologias e Arquitetura LaTeX" src="resources/isctex-dark.png">
+  <source media="(prefers-color-scheme: dark)" srcset="Resources/isctex-white.png">
+  <source media="(prefers-color-scheme: light)" srcset="Resources/isctex-dark.png">
+  <img alt="ISCTE Tecnologias e Arquitetura LaTeX" src="Resources/isctex-dark.png">
 </picture>
 
 <br>
