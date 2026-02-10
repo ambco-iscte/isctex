@@ -3,7 +3,7 @@
   <source media="(prefers-color-scheme: light)" srcset="Resources/isctex-dark.png">
   <img alt="ISCTE Tecnologias e Arquitetura LaTeX" src="Resources/isctex-dark.png">
 </picture>
-<br>
+
 
 ### [**🎓 Master's Dissertation**](Master's%20Dissertation)
 
@@ -12,7 +12,6 @@ Can be used for:
 - Master's in Telecommunications Engineering
 - Master's in Data Science
 
-<br>
 
 ### [**🎓 PhD Thesis / Reports**](PhD%20Thesis)
 
@@ -20,15 +19,14 @@ Can be used for:
 
 - Doctoral Programme in Information Science and Technology
 
-<br>
 
-### [**🎓 PhD Research Project Proposal **](Research%20Project%20Proposal)
+
+### [**🎓 PhD Research Project Proposal**](Research%20Project%20Proposal)
 
 Can be used for:
 
 - Doctoral Programme in Information Science and Technology
 
-<br>
 
 ---
 
