@@ -5,6 +5,12 @@
 
 This LaTeX template is for the Research Project Proposal form required to apply to the [PhD Program in Information Science and Technology](https://www.iscte-iul.pt/course/53/doctorate-degree-phd-in-information-science-and-technology/candidacy) at Iscte. As with the Master's dissertation template, non-work-related information such as LaTeX package configurations is stored in a separate file to facilitate the writing of the form proper. 
 
+The template can be used by importing the corresponding package at the beginning of the document:
+
+```tex
+\usepackage{proposal}
+```
+
 Your project proposal should begin by defining information on the author and the supervisor(s), along with the project's title and the program for which you are applying. The following is an example.
 ```tex
 \title{The Title of Your Project}

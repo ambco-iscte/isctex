@@ -1,12 +1,11 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="resources/isctex-white.png">
-  <source media="(prefers-color-scheme: light)" srcset="resources/isctex-dark.png">
-  <img alt="ISCTE Tecnologias e Arquitetura LaTeX" src="resources/isctex-dark.png">
+  <source media="(prefers-color-scheme: dark)" srcset="Resources/isctex-white.png">
+  <source media="(prefers-color-scheme: light)" srcset="Resources/isctex-dark.png">
+  <img alt="ISCTE Tecnologias e Arquitetura LaTeX" src="Resources/isctex-dark.png">
 </picture>
-
 <br>
 
-### [**🎓 Master's Dissertation**](ISTA%20Master's%20Dissertation)
+### [**🎓 Master's Dissertation**](Master's%20Dissertation)
 
 Can be used for:
 - Master's in Computer Science and Engineering
@@ -23,7 +22,7 @@ Can be used for:
 
 <br>
 
-### [**🎓 PhD Research Project Proposal **](PHD%20Research%20Project%20Proposal)
+### [**🎓 PhD Research Project Proposal **](Research%20Project%20Proposal)
 
 Can be used for:
 

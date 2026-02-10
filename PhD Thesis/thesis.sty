@@ -548,7 +548,7 @@ PhD in \ifdef\theprogram{\textit{\theprogram}}{
 \textbf{\thetitle}
 }
 }{
-    \PackageError{Thesis}{Your thesis needs a title. Define one using the title command}{}
+    %\PackageError{Thesis}{Your thesis needs a title. Define one using the title command}{}
     {\color{red}\textbf{\textsc{Error:} Undefined Title}}
 }
 ~\\
@@ -557,14 +557,16 @@ PhD in \ifdef\theprogram{\textit{\theprogram}}{
 \ifdef\theauthor{
 \theauthor
 }{
-\PackageError{Thesis}{Your thesis needs your name! Define one using the title command}{}
+    %\PackageError{Thesis}{Your thesis needs your name! Define one using the title command}{}
     {\color{red}\textbf{\textsc{Error:} Undefined Author}}
 }\\
 ~\\
 ~\\
-PhD in \ifdef\theprogram{\textit{\theprogram}}{
-\PackageError{Thesis}{Your thesis needs a PhD program name. Define one using the program command}{}
-{\color{red}\textbf{\textsc{Error:} Undefined Programme}}
+PhD in \ifdef\theprogram{
+    \textit{\theprogram}
+}{
+    %\PackageError{Thesis}{Your thesis needs a PhD program name. Define one using the program command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Programme}}
 }\ifdef\thespecialty{
 ,\\In the Specialty of \textit{\thespecialty}\\
 }{}
@@ -579,7 +581,7 @@ Committee}{Jury}:
 \else
     \ifnum\value{numjury}>4
     \else
-        \PackageError{Thesis}{The jury/supervising committee must have exactly four members: the PhD programme director, one of your supervisors, a professor from ISCTE, and a professor from another institution. Only \arabic{numjury} jury members \waswere{numsupervisors} provided}{}
+        %\PackageError{Thesis}{The jury/supervising committee must have exactly four members: the PhD programme director, one of your supervisors, a professor from ISCTE, and a professor from another institution. Only \arabic{numjury} jury members \waswere{numsupervisors} provided}{}
     \fi
     ~\\
     ~\\
@@ -589,8 +591,8 @@ Committee}{Jury}:
 \vfill\ifdef\thedate{
 \dateorinvalid\themonth\theyear0
 }{
-\PackageError{Thesis}{Your thesis needs a date. Define one using the date command}{}
-{\color{red}\textbf{\textsc{Error:} Undefined Date}}
+    %\PackageError{Thesis}{Your thesis needs a date. Define one using the date command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Date}}
 }
 \end{flushleft}
 \thispagestyle{empty}
@@ -688,7 +690,7 @@ Committee}{Jury}:
 \theabstract
 
 % Number of words, roughly
-\edef\cnt{\number\numexpr\abstractwordcount-\value{numkeywordspt}\relax}
+\edef\cnt{\number\numexpr\abstractwordcount-\value{numkeywords}\relax}
                     
 \ifnum\cnt>250
     \PackageError{Thesis}{Your Abstract has too many words. The limit is 250, but you have written \cnt}{}

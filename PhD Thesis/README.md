@@ -5,16 +5,16 @@
 
 This LaTeX template is for your PhD Thesis, or for the yearly reports for the same doctoral programme at Iscte. As with the previous templates, non-work-related information such as LaTeX package configurations is stored in a separate file.
 
-The package can be used in two ways, depending on if you want your thesis document or a yearly report.
+The template can be used in two ways, depending on if you want your thesis document or a yearly report.
 
 For the thesis proper:
 ```tex
-\usepackage{dcti}
+\usepackage{thesis}
 ```
 
 For yearly reports:
 ```tex
-\usepackage[report]{dcti}
+\usepackage[report]{thesis}
 ```
 
 Your thesis should begin by defining information on the thesis, namely, its title, author's name, supervisor(s), jury / supervision committee, doctoral programme name, department name, and date.
