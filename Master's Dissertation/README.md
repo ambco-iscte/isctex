@@ -1,12 +1,14 @@
 # 🎓 Master's Dissertation
 
 > [!IMPORTANT]
-> If you're using Overleaf (you should; it's great), we recommend compiling the templates with LuaLaTeX and using TeX Live Version 2024.
+> If you're using Overleaf (you should; it's great), we recommend compiling the templates with LuaLaTeX and using the latest TeX Live version.
 
 > [!WARNING]
 > Sometimes (it depends on who verifies your dissertations' style guidelines compliance), ISTA asks that the Introduction chapter, and possibly the Conclusion chapter, not be numbered. To do this, you can append an asterisk to the `\chapter`, `\section`, `\subsection`, and `\subsubsection` commands to remove the numbering. For example: `\chapter*{Not a Numbered Chapter}`.
 
 This template serves as an adaptation of ISTA's style guidelines for dissertations or projects to be used with LaTeX. The template has been structured so that all non-work-related details, such as LaTeX package configurations and the like, are stored in a separate file so as to not hinder the author's writing process.
+
+
 
 The template can be used in two ways, depending on if you want your thesis document to include the ISCTE Business School logo (for the Master's in Data Science) or not (for the remaining Master's programmes).
 
@@ -22,6 +24,14 @@ For students of the Master's in Computer Science and Engineering or the Master's
 \usepackage{dissertation}
 ```
 
+Additionally, if you'd like to write your dissertation in Portuguese, you can change the built-in titles and names to Portuguese using the `pt` option (which you can use alongside `ibs` by using `ibs,pt` or `pt,ibs`):
+
+```tex
+\usepackage[pt]{dissertation}
+```
+
+
+
 Your dissertation/project report should begin by defining the work, along with its author and supervisor(s). The following is a barebones example of how this can be achieved in the template.
 
 ```tex
@@ -32,6 +42,7 @@ Your dissertation/project report should begin by defining the work, along with i
 \program{Master's in Using LaTeX}
 
 \department{Department of Typesetting}
+% \department{Another Department} % Optional (add as many as you need)
 
 \supervisor
 {Ph.D. Professor Alice, Assistant Professor}
@@ -82,13 +93,15 @@ Write here the abstract in English. There is a 250 word limit. Your thesis shoul
 
 The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibLaTeX.
 
-The template checks your document the following restrictions, and will warn you if anything is out of place (so just relax and write):
+
+
+The template checks your document for the following requirements, and will warn you if anything is out of place (so just relax and write):
 
 - The Resumo and Abstract sections each have a 250 word limit. If you want to check your word counts manually, you can do so by pasting a snippet of LaTeX code into [this website](https://app.uio.no/ifi/texcount/online.php);
-- The Resumo and Abstract sections should declare the same number of keywords, no less than 3 and no more than 6;
+- The Resumo and Abstract sections should declare the same number of keywords, no fewer than 3 and no more than 6;
 - All these fields must be defined: the dissertation title, programme name, department name, author name, and submission date (month and year);
-  - Months should be capitalised and fully written out, e.g. "January" instead of "january" or "Jan";
-  - The thesis submission year should be greater than or equal to the current year.
+  - Months should be capitalised and fully written out, e.g. "January" instead of "january" or "Jan" in English, or "Janeiro" instead of "jan" in Portuguese;
+  - The dissertation submission year should be greater than or equal to the current year.
 - The dissertation must have at least 1 supervisor, and no more than 2.
 
 <br>

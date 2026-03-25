@@ -1,9 +1,11 @@
 # 🎓 PhD Thesis
 
 > [!IMPORTANT]
-> If you're using Overleaf (you should; it's great), we recommend compiling the templates with LuaLaTeX and using TeX Live Version 2024.
+> If you're using Overleaf (you should; it's great), we recommend compiling the templates with LuaLaTeX and using the latest TeX Live version.
 
 This LaTeX template is for your PhD Thesis, or for the yearly reports for the same doctoral programme at Iscte. As with the previous templates, non-work-related information such as LaTeX package configurations is stored in a separate file.
+
+
 
 The template can be used in two ways, depending on if you want your thesis document or a yearly report.
 
@@ -17,7 +19,16 @@ For yearly reports:
 \usepackage[report]{thesis}
 ```
 
+Additionally, if you'd like to write your thesis in Portuguese, you can change the built-in titles and names to Portuguese using the `pt` option:
+
+```tex
+\usepackage[pt]{thesis}
+```
+
+
+
 Your thesis should begin by defining information on the thesis, namely, its title, author's name, supervisor(s), jury / supervision committee, doctoral programme name, department name, and date.
+
 ```tex
 \title{Title of a Great PhD Thesis}
 
@@ -26,7 +37,7 @@ Your thesis should begin by defining information on the thesis, namely, its titl
 \program{Name of the Doctoral Programme}{Your PhD Specialty}
 
 \department{Department of Typesetting}
-
+% \department{Another Department} % Optional
 
 \supervisor
 {Ph.D. Professor Alice, Assistant Professor}
@@ -87,12 +98,14 @@ Write here the abstract in English. There is a 250 word limit. Your thesis shoul
 
 The remainder of your document is written in standard LaTeX within the `document` environment. References are automatically handled by BibLaTeX.
 
-The template checks your document the following restrictions, and will warn you if anything is out of place (so just relax and write):
+
+
+The template checks your document for the following restrictions, and will warn you if anything is out of place (so just relax and write):
 
 - The Resumo and Abstract sections each have a 250 word limit. If you want to check your word counts manually, you can do so by pasting a snippet of LaTeX code into [this website](https://app.uio.no/ifi/texcount/online.php);
-- The Resumo and Abstract sections should declare the same number of keywords, no less than 3 and no more than 6;
+- The Resumo and Abstract sections should declare the same number of keywords, no fewer than 3 and no more than 6;
 - All these fields must be defined: the thesis title, programme name, department name, author name, and submission date (month and year);
-  - Months should be capitalised and fully written out, e.g. "January" instead of "january" or "Jan";
+  - Months should be capitalised and fully written out, e.g. "January" instead of "january" or "Jan" in English, or "Janeiro" instead of "jan" in Portuguese;
   - The thesis submission year should be greater than or equal to the current year.
 - The thesis must have at least 1 supervisor, and no more than 3;
 - The thesis monitoring committee / defence jury must have exactly 4 members.

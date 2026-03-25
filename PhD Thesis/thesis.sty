@@ -1,6 +1,7 @@
 \ProvidesPackage{thesis}
 
 \DeclareOption{report}{\gdef\isreport{}}
+\DeclareOption{pt}{\gdef\ispt{}}
 \ProcessOptions\relax
 
 % =================================================================
@@ -17,6 +18,7 @@
 % =================================================================
 % =================================================================
 
+\newcommand{\ifpt}[2]{\ifdef\ispt{#1}{#2}}
 
 % =================================================================
 % PACKAGE DEFINITIONS
@@ -29,7 +31,7 @@
 \RequirePackage{chngcntr}
 \RequirePackage{graphicx}
 \RequirePackage[a4paper, margin=2.5cm]{geometry}
-\RequirePackage[english]{babel}
+\RequirePackage[portuguese, english]{babel}
 \RequirePackage{fancyhdr}
 \RequirePackage{titlesec}
 \RequirePackage{enumitem}
@@ -55,14 +57,28 @@
 \RequirePackage{tipa}
 \RequirePackage{bigfoot}
 \RequirePackage{minted}
+
 \RequirePackage{algorithm}
 \RequirePackage{algorithmicx}
+\makeatletter
+    % PORTUGUESE LOCALISATION
+    \renewcommand{\ALG@name}{\ifpt{Algoritmo}{Algorithm}}
+\makeatother
+
 \RequirePackage{algpseudocode}
 \RequirePackage{csquotes}
 \RequirePackage[hidelinks]{hyperref}
 \RequirePackage{environ}
 \RequirePackage{xstring}
 \RequirePackage[useregional]{datetime2}
+\RequirePackage{montserrat}
+\RequirePackage[T1]{fontenc}
+
+\ifpt{
+    \selectlanguage{portuguese}
+}{
+    \selectlanguage{english}
+}
 
 % =================================================================
 % FORMAT SECTIONS TITLE STYLE
@@ -97,27 +113,28 @@
 % =================================================================
 \providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
 \theoremstyle{plain}
-\newtheorem{acknowledgement}{Acknowledgement}
-\newtheorem{axiom}{Axiom}[chapter]
-\newtheorem{case}{Case}[chapter]
-\newtheorem{claim}{Claim}[chapter]
-\newtheorem{conclusion}{Conclusion}[chapter]
-\newtheorem{condition}{Condition}[chapter]
-\newtheorem{conjecture}{Conjecture}[chapter]
-\newtheorem{corollary}{Corollary}[chapter]
-\newtheorem{criterion}{Criterion}[chapter]
-\newtheorem{definition}{Definition}[chapter]
-\newtheorem{example}{Example}[chapter]
-\newtheorem{exercise}{Exercise}[chapter]
-\newtheorem{lemma}{Lemma}[chapter]
-\newtheorem{notation}{Notation}[chapter]
-\newtheorem{problem}{Problem}[chapter]
-\newtheorem{proposition}{Proposition}[chapter]
-\newtheorem{remark}{Remark}[chapter]
-\newtheorem{solution}{Solution}[chapter]
-\newtheorem{summary}{Summary}[chapter]
-\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{acknowledgement}{\ifpt{Agradecimento}{Acknowledgement}}
+\newtheorem{axiom}{\ifpt{Axioma}{Axiom}}[chapter]
+\newtheorem{case}{\ifpt{Caso}{Case}}[chapter]
+\newtheorem{claim}{\ifpt{Afirma\c{c}\~{a}o}{Claim}}[chapter]
+\newtheorem{conclusion}{\ifpt{Conclus\~{a}o}{Conclusion}}[chapter]
+\newtheorem{condition}{\ifpt{Condi\c{c}\~{a}o}{Condition}}[chapter]
+\newtheorem{conjecture}{\ifpt{Conjetura}{Conjecture}}[chapter]
+\newtheorem{corollary}{\ifpt{Corol\'{a}rio}{Corollary}}[chapter]
+\newtheorem{criterion}{\ifpt{Crit\'{e}rio}{Criterion}}[chapter]
+\newtheorem{definition}{\ifpt{Defini\c{c}\~{a}o}{Definition}}[chapter]
+\newtheorem{example}{\ifpt{Exemplo}{Example}}[chapter]
+\newtheorem{exercise}{\ifpt{Exerc\'{i}cio}{Exercise}}[chapter]
+\newtheorem{lemma}{\ifpt{Lema}{Lemma}}[chapter]
+\newtheorem{notation}{\ifpt{Nota\c{c}\~{a}o}{Notation}}[chapter]
+\newtheorem{problem}{\ifpt{Problema}{Problem}}[chapter]
+\newtheorem{proposition}{\ifpt{Proposi\c{c}\~{a}o}{Proposition}}[chapter]
+\newtheorem{remark}{\ifpt{Observa\c{c}\~{a}o}{Remark}}[chapter]
+\newtheorem{solution}{\ifpt{Solu\c{c}\~{a}o}{Solution}}[chapter]
+\newtheorem{summary}{\ifpt{Resumo}{Summary}}[chapter]
+\newtheorem{theorem}{\ifpt{Teorema}{Theorem}}[chapter]
 \numberwithin{equation}{chapter}
+
 
 % =================================================================
 % FONT SIZE
@@ -127,6 +144,7 @@
 \newcommand\numberprefix{}
 \def\numberline#1{\hb@xt@\@tempdima{\numberprefix #1\hfil}}
 
+
 % =================================================================
 % LIST OF FIGURES AND TABLES FORMATTING
 % =================================================================
@@ -135,22 +153,28 @@
 
 % List of Figures
 \def\l@figure#1#2{\@tocline{0}{3pt plus2pt}{0pt}{\ifdef\listOfFiguresLeftSpacing{\listOfFigures@LeftSpacing}{6pc}}{}%
-  {\renewcommand\numberprefix{Figure~}#1}{#2}}
+  {\renewcommand\numberprefix{\ifpt{Figura}{Figure}~}#1}{#2}}
 
 % List of Tables
 \def\l@table#1#2{\@tocline{0}{3pt plus2pt}{0pt}{\ifdef\listOfTablesLeftSpacing{\listOfTables@LeftSpacing}{6pc}}{}%
-  {\renewcommand\numberprefix{Table~}#1}{#2}}
+  {\renewcommand\numberprefix{\ifpt{Tabela}{Table}~}#1}{#2}}
 \makeatother
+
 
 % =================================================================
 % COMMAND TO ALWAYS START CHAPTERS ON ODD PAGES
 % =================================================================
+\makeatletter
 \def\cleardoublepage{\clearpage\if@twoside%
   \ifodd\c@page\else
   \vspace*{\fill}
   \hfill
   \begin{center}
-  {\fontfamily{Montserrat-TOsF}\selectfont\small [ This page is intentionally left blank. ]}
+  {\fontfamily{Montserrat-TOsF}\selectfont\normalsize\ifpt{
+        [ Esta p\'{a}gina foi intencionalmente deixada em branco. ]
+    }{
+        [ This page is intentionally left blank. ]
+    }}
   
   \end{center}
   \vspace{\fill}
@@ -175,21 +199,23 @@
    %\clearpage           % finish off the page
   }
   \numberwithin{section}{chapter}
-\fancyhf{}
-\pagestyle{fancy}
-\fancyfoot[LE,RO]{\scriptsize\thepage}
+
 
 % =================================================================
 % PAGE NUMBER ON FOOTER, ALTERNATES LEFT AND RIGHT
 % =================================================================
+\fancyhf{}
+\pagestyle{fancy}
+\fancyfoot[LE,RO]{\normalsize\thepage}
+
 \makeatletter
 \def\ps@plain{\ps@empty
  \def\@evenfoot{%
-   \normalfont\scriptsize
+   \normalfont\normalsize
    \rlap{\thepage}\hfil
    }%
  \def\@oddfoot{%
-   \normalfont\scriptsize\hfil
+   \normalfont\normalsize\hfil
    \llap{\thepage}
    }%
 }
@@ -204,8 +230,6 @@
 % =================================================================
 % ISCTE OFFICIAL FONT IS MONTSERRAT
 % =================================================================
-\RequirePackage{montserrat}
-\RequirePackage[T1]{fontenc}
 \renewcommand*\oldstylenums[1]{{\fontfamily{Montserrat-TOsF}\selectfont #1}}
 
 % =================================================================
@@ -218,13 +242,6 @@
 % PARAGRAPHS HAVE AN INDENTATION OF 0.7CM
 % =================================================================
 \setlength{\parindent}{0.7cm}
-
-% =================================================================
-% REFERENCES SECTION TITLE
-% =================================================================
-\addto{\extrasenglish}{%
-  \renewcommand{\bibname}{References}
-}
 
 \let\olddocument=\document
 \let\oldenddocument=\enddocument
@@ -252,20 +269,24 @@
             {\color{red}\textbf{\textsc{Error:} Invalid Date}} 
         \else
             \IfStrEqCase{#1}{
-                {January}{#1, #2}
-                {February}{#1, #2}
-                {March}{#1, #2}
-                {April}{#1, #2}
-                {May}{#1, #2}
-                {June}{#1, #2}
-                {July}{#1, #2}
-                {August}{#1, #2}
-                {September}{#1, #2}
-                {October}{#1, #2}
-                {November}{#1, #2}
-                {December}{#1, #2}}
+                {\ifpt{Janeiro}{January}}{#1, #2}
+                {\ifpt{Fevereiro}{February}}{#1, #2}
+                {\ifpt{Mar\c{c}o}{March}}{#1, #2}
+                {\ifpt{Abril}{April}}{#1, #2}
+                {\ifpt{Maio}{May}}{#1, #2}
+                {\ifpt{Junho}{June}}{#1, #2}
+                {\ifpt{Julho}{July}}{#1, #2}
+                {\ifpt{Agosto}{August}}{#1, #2}
+                {\ifpt{Setembro}{September}}{#1, #2}
+                {\ifpt{Outubro}{October}}{#1, #2}
+                {\ifpt{Novembro}{November}}{#1, #2}
+                {\ifpt{Dezembro}{December}}{#1, #2}}
                 [
-                    \ifnum#3=1\PackageError{Thesis}{Invalid month "#1". Should be one of: January, February, March, April, May, June, July, August, September, October, November, December (case-sensitive)}{}\else\fi
+                    \ifnum#3=1\ifpt{
+                        \PackageError{Thesis}{Invalid month "#1". Should be one of: Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro (case-sensitive)}{}
+                    }{
+                        \PackageError{Thesis}{Invalid month "#1". Should be one of: January, February, March, April, May, June, July, August, September, October, November, December (case-sensitive)}{}
+                    }\else\fi
                     {\color{red}\textbf{\textsc{Error:} Invalid Date}}
                 ]
         \fi
@@ -277,7 +298,13 @@
 
 \renewcommand{\author}[1]{\gdef\theauthor{#1}}
 
-\newcommand{\department}[1]{\gdef\thedepartment{#1}}
+\newcommand{\department}[1]{
+    \ifdef\thedepartment{
+        \edef\thedepartment{\thedepartment{}~\\~\\#1}
+    }{ % else
+        \gdef\thedepartment{#1}
+    }
+}
 
 \newcommand{\program}[2]{
     \gdef\theprogram{#1}
@@ -442,7 +469,7 @@
 \sffamily
 \frontFont
 \begin{flushleft}
-\includegraphics[width=6.03cm]{images/iscte.png}\\[3.3mm]
+\ifpt{\includegraphics[width=6.03cm]{images/iscte-pt.png}}{\includegraphics[width=6.03cm]{images/iscte.png}}\\[3.3mm]
 
 {\color{ISCTEDarkBlue}\hrulefill}
 ~\\
@@ -452,7 +479,7 @@
 \ifdef\isreport{
 \textbf{\thetitle}\\
 ~\\
-\theyear\space Progress Report
+\theyear\space \ifpt{Relat\'{o}rio de Progresso}{Progress Report}
 ~\\
 }{
 \textbf{\thetitle}
@@ -474,18 +501,17 @@
 ~\\
 ~\\
 ~\\
-PhD in \ifdef\theprogram{\textit{\theprogram}}{
+\ifpt{Programa Doutoral em}{PhD in} \ifdef\theprogram{\textit{\theprogram}}{
 \PackageError{Thesis}{Your thesis needs a PhD program name. Define one using the program command}{}
 {\color{red}\textbf{\textsc{Error:} Undefined Programme}}
-}\ifdef\thespecialty{
-,\\In the Specialty of \textit{\thespecialty}\\
+}\ifdef\thespecialty{,\\\ifpt{Na Especialidade de}{In the Specialty of} \textit{\thespecialty}\\
 }{}
 ~\\
 ~\\
 ~\\
 ~\\
 \ifnum\value{numsupervisors}=1
-    Supervisor:
+    \ifpt{Orientador}{Supervisor}:
     ~\\
     ~\\
     \thesupervisors
@@ -501,7 +527,7 @@ PhD in \ifdef\theprogram{\textit{\theprogram}}{
             ~\\
             {\color{red}\textbf{\textsc{Error:} Thesis can only have up to 3 supervisors (inclusive), but \arabic{numsupervisors} \waswere{numsupervisors} provided}}
         \else
-            Supervisors:
+            \ifpt{Orientadores}{Supervisors}:
             ~\\
             ~\\
             \thesupervisors
@@ -523,7 +549,7 @@ PhD in \ifdef\theprogram{\textit{\theprogram}}{
 % SECOND COVER PAGE (WITH DEPARTMENT NAME AND JURY)
 % =================================================================
 \begin{flushleft}
-  \includegraphics[width=6.03cm]{images/ista.png}\\[7mm]
+\ifpt{\includegraphics[width=6.03cm]{images/ista-pt.png}}{\includegraphics[width=6.03cm]{images/ista.png}}\\[7mm]
 
 {\color{ISCTEDarkBlue}\hrulefill}
 ~\\
@@ -542,7 +568,7 @@ PhD in \ifdef\theprogram{\textit{\theprogram}}{
 \ifdef\isreport{
 \textbf{\thetitle}\\
 ~\\
-\theyear\space Progress Report
+\theyear\space \ifpt{Relat\'{o}rio de Progresso}{Progress Report}
 ~\\
 }{
 \textbf{\thetitle}
@@ -562,18 +588,12 @@ PhD in \ifdef\theprogram{\textit{\theprogram}}{
 }\\
 ~\\
 ~\\
-PhD in \ifdef\theprogram{
-    \textit{\theprogram}
-}{
-    %\PackageError{Thesis}{Your thesis needs a PhD program name. Define one using the program command}{}
-    {\color{red}\textbf{\textsc{Error:} Undefined Programme}}
-}\ifdef\thespecialty{
-,\\In the Specialty of \textit{\thespecialty}\\
+\ifpt{Programa Doutoral em}{PhD in} \ifdef\theprogram{\textit{\theprogram}}{{\color{red}\textbf{\textsc{Error:} Undefined Programme}}}\ifdef\thespecialty{,\\\ifpt{Na Especialidade de}{In the Specialty of} \textit{\thespecialty}\\
 }{}
 ~\\
 ~\\
-\ifdef\isreport{Thesis Monitoring 
-Committee}{Jury}:
+\ifdef\isreport{\ifpt{Comiss\~{a}o de Acompanhamento de Tese}{Thesis Monitoring 
+Committee}}{\ifpt{J\'{u}ri}{Jury}}:
 \ifnum\value{numjury}=4
     ~\\
     ~\\
@@ -643,7 +663,7 @@ Committee}{Jury}:
 \pagenumbering{roman} %
 \ifdef\theacknowledgements
 {
-    \chapter*{Acknowledgments}
+    \chapter*{\ifpt{Agradecimentos}{Acknowledgments}}
     \setcounter{page}{1}
     \theacknowledgements
 }}
@@ -720,6 +740,20 @@ Committee}{Jury}:
     \PackageError{Thesis}{Portuguese and English keywords don't match. There are \arabic{numkeywordspt} Portuguese keywords and \arabic{numkeywords} English keywords}{}
 \fi
 
+
+% =================================================================
+% PORTUGUESE LOCALISATION
+% =================================================================
+\renewcommand{\contentsname}{\ifpt{\'{I}ndice}{Contents}}
+\renewcommand{\listfigurename}{\ifpt{Lista de Figuras}{List of Figures}}
+\renewcommand{\listtablename}{\ifpt{Lista de Tabelas}{List of Tables}}
+
+\renewcommand{\chaptername}{\ifpt{Cap\'{i}tulo}{Chapter}}
+
+\renewcommand{\figurename}{\ifpt{Figura}{Figure}}
+\renewcommand{\tablename}{\ifpt{Tabela}{Table}}
+\renewcommand{\proofname}{\ifpt{Prova}{Proof}}
+
 % =================================================================
 % TABLE OF CONTENTS, LIST OF FIGURES, LIST OF TABLES, AND ACRONYMS
 % =================================================================
@@ -729,7 +763,7 @@ Committee}{Jury}:
 \cleardoublepage
 \ifdef\theacronyms
 {
-    \chapter*{List of Acronyms}
+    \chapter*{\ifpt{Lista de Acr\'{o}nimos}{List of Acronyms}}
     \begin{acronym}
     \theacronyms
     \end{acronym}
@@ -746,6 +780,6 @@ Committee}{Jury}:
 \setcounter{page}{1}
 \pagenumbering{arabic}
 }{
-\printbibliography[title={References}]
+\printbibliography[title={\ifpt{Refer\^{e}ncias Bibliogr\'{a}ficas}{References}}]
 \oldenddocument
 }
