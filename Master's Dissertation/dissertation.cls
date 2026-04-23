@@ -1,0 +1,767 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{dissertation}
+
+\DeclareOption{ibs}{\gdef\includeibslogo{}}
+\DeclareOption{pt}{\gdef\ispt{}}
+\DeclareOption*{\OptionNotUsed}
+\ProcessOptions\relax
+
+\LoadClass[12pt,reqno,twoside]{amsbook}
+
+% =================================================================
+% =================================================================
+% =================================================================
+% =================================================================
+% =================================================================
+%
+% Hey! Don't mess with this file unless you know what you're doing!
+%
+% =================================================================
+% =================================================================
+% =================================================================
+% =================================================================
+% =================================================================
+
+\newcommand{\ifpt}[2]{\ifdef\ispt{#1}{#2}}
+
+% =================================================================
+% PACKAGE DEFINITIONS
+% =================================================================
+\RequirePackage{eurosym}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage[onehalfspacing]{setspace}
+\RequirePackage{chngcntr}
+\RequirePackage{graphicx}
+\RequirePackage[a4paper, margin=2.5cm]{geometry}
+\RequirePackage[portuguese, english]{babel}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage[printonlyused]{acronym}
+
+\RequirePackage[
+    backend=biber,
+    style=ieee,
+    mincitenames=1,
+    maxcitenames=3, 
+    minbibnames=3,
+    maxbibnames=99,
+    uniquename=false,
+    uniquelist=false
+]{biblatex}
+
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{listings}
+\RequirePackage{booktabs}
+\RequirePackage{microtype} 
+\RequirePackage{xcolor}
+\RequirePackage{url}
+\RequirePackage{tipa}
+\RequirePackage{bigfoot}
+\RequirePackage{minted}
+
+\RequirePackage{algorithm}
+\RequirePackage{algorithmicx}
+\makeatletter
+    % PORTUGUESE LOCALISATION
+    \renewcommand{\ALG@name}{\ifpt{Algoritmo}{Algorithm}}
+\makeatother
+
+\RequirePackage{algpseudocode}
+\RequirePackage{csquotes}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{environ}
+\RequirePackage{xstring}
+\RequirePackage[useregional]{datetime2}
+\RequirePackage{montserrat}
+\RequirePackage[T1]{fontenc}
+
+\ifpt{
+    \selectlanguage{portuguese}
+}{
+    \selectlanguage{english}
+}
+
+
+% =================================================================
+% FORMAT SECTIONS TITLE STYLE
+% =================================================================
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\subsubsection}
+{0pt}{2.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+%
+\makeatletter
+    \def\section{\@startsection{section}{1}%
+      \z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
+      {\normalfont\bfseries\flushleft}}
+      
+    \def\subsection{\@startsection{subsection}{2}%
+      \z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
+      {\normalfont\bfseries\flushleft}}
+
+    \def\subsubsection{\@startsection{subsubsection}{3}%
+      \z@{.5\linespacing\@plus.7\linespacing}{.1\linespacing}%
+      {\normalfont\itshape}}
+
+    \let\@afterindenttrue\@afterindentfalse
+\makeatother
+
+
+% =================================================================
+% MATRICES DISPLAY UP TO 10 COLUMNS
+% =================================================================
+\setcounter{MaxMatrixCols}{10}
+
+
+% =================================================================
+% THEOREMS AND OTHER ENVIRONMENTS
+% =================================================================
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+\theoremstyle{plain}
+\newtheorem{acknowledgement}{\ifpt{Agradecimento}{Acknowledgement}}
+\newtheorem{axiom}{\ifpt{Axioma}{Axiom}}[chapter]
+\newtheorem{case}{\ifpt{Caso}{Case}}[chapter]
+\newtheorem{claim}{\ifpt{Afirma\c{c}\~{a}o}{Claim}}[chapter]
+\newtheorem{conclusion}{\ifpt{Conclus\~{a}o}{Conclusion}}[chapter]
+\newtheorem{condition}{\ifpt{Condi\c{c}\~{a}o}{Condition}}[chapter]
+\newtheorem{conjecture}{\ifpt{Conjetura}{Conjecture}}[chapter]
+\newtheorem{corollary}{\ifpt{Corol\'{a}rio}{Corollary}}[chapter]
+\newtheorem{criterion}{\ifpt{Crit\'{e}rio}{Criterion}}[chapter]
+\newtheorem{definition}{\ifpt{Defini\c{c}\~{a}o}{Definition}}[chapter]
+\newtheorem{example}{\ifpt{Exemplo}{Example}}[chapter]
+\newtheorem{exercise}{\ifpt{Exerc\'{i}cio}{Exercise}}[chapter]
+\newtheorem{lemma}{\ifpt{Lema}{Lemma}}[chapter]
+\newtheorem{notation}{\ifpt{Nota\c{c}\~{a}o}{Notation}}[chapter]
+\newtheorem{problem}{\ifpt{Problema}{Problem}}[chapter]
+\newtheorem{proposition}{\ifpt{Proposi\c{c}\~{a}o}{Proposition}}[chapter]
+\newtheorem{remark}{\ifpt{Observa\c{c}\~{a}o}{Remark}}[chapter]
+\newtheorem{solution}{\ifpt{Solu\c{c}\~{a}o}{Solution}}[chapter]
+\newtheorem{summary}{\ifpt{Resumo}{Summary}}[chapter]
+\newtheorem{theorem}{\ifpt{Teorema}{Theorem}}[chapter]
+\numberwithin{equation}{chapter}
+
+
+% =================================================================
+% FONT SIZE
+% =================================================================
+\makeatletter
+\newcommand\frontFont{\@setfontsize\frontFont{14}{14}}
+\newcommand\numberprefix{}
+\def\numberline#1{\hb@xt@\@tempdima{\numberprefix #1\hfil}}
+
+
+% =================================================================
+% LIST OF FIGURES AND TABLES FORMATTING
+% =================================================================
+\newcommand{\lofskip}[1]{\gdef\listOfFigures@LeftSpacing{#1}}
+\newcommand{\lotskip}[1]{\gdef\listOfTables@LeftSpacing{#1}}
+
+% List of Figures
+\def\l@figure#1#2{\@tocline{0}{3pt plus2pt}{0pt}{\ifdef\listOfFiguresLeftSpacing{\listOfFigures@LeftSpacing}{6pc}}{}%
+  {\renewcommand\numberprefix{\ifpt{Figura}{Figure}~}#1}{#2}}
+
+% List of Tables
+\def\l@table#1#2{\@tocline{0}{3pt plus2pt}{0pt}{\ifdef\listOfTablesLeftSpacing{\listOfTables@LeftSpacing}{6pc}}{}%
+  {\renewcommand\numberprefix{\ifpt{Tabela}{Table}~}#1}{#2}}
+\makeatother
+
+
+% =================================================================
+% COMMAND TO ALWAYS START CHAPTERS ON ODD PAGES
+% =================================================================
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside%
+  \ifodd\c@page\else
+  \vspace*{\fill}
+  \hfill
+  \begin{center}
+  {\fontfamily{Montserrat-TOsF}\selectfont\normalsize\ifpt{
+        [ Esta p\'{a}gina foi intencionalmente deixada em branco. ]
+    }{
+        [ This page is intentionally left blank. ]
+    }}
+  
+  \end{center}
+  \vspace{\fill}
+  \thispagestyle{empty}
+  \newpage
+ \if@twocolumn\hbox{}\newpage\fi\fi\fi
+}
+\makeatother
+
+
+% =================================================================
+% DEDICATION ENVIRONMENT
+% =================================================================
+\newenvironment{dedicationenv}
+  {%\clearpage           % we want a new page
+   \thispagestyle{empty}% no header and footer
+   \vspace*{\stretch{1}}% some space at the top
+   %\itshape             % the text is in italics
+   \raggedleft          % flush to the right margin
+  }
+  {\par % end the paragraph
+   \vspace{\stretch{3}} % space at bottom is three times that at the top
+   %\clearpage           % finish off the page
+  }
+  \numberwithin{section}{chapter}
+
+
+% =================================================================
+% PAGE NUMBER ON FOOTER, ALTERNATES LEFT AND RIGHT
+% =================================================================
+\fancyhf{}
+\pagestyle{fancy}
+\fancyfoot[LE,RO]{\normalsize\thepage}
+%
+\makeatletter
+\def\ps@plain{\ps@empty
+ \def\@evenfoot{%
+   \normalfont\normalsize
+   \rlap{\thepage}\hfil
+   }%
+ \def\@oddfoot{%
+   \normalfont\normalsize\hfil
+   \llap{\thepage}
+   }%
+}
+\makeatother
+
+% =================================================================
+% DISABLE HEADER AND FOOTER RULERS
+% =================================================================
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+% =================================================================
+% ISCTE OFFICIAL FONT IS MONTSERRAT
+% =================================================================
+\renewcommand*\oldstylenums[1]{{\fontfamily{Montserrat-TOsF}\selectfont #1}}
+
+
+% =================================================================
+% TABLES AND FIGURES ARE NUMBERED WITHIN THE CHAPTER THEY APPEAR IN
+% =================================================================
+\numberwithin{table}{chapter}
+\numberwithin{figure}{chapter}
+
+% =================================================================
+% PARAGRAPHS HAVE AN INDENTATION OF 0.7CM
+% =================================================================
+\setlength{\parindent}{0.7cm}
+
+\let\olddocument=\document
+\let\oldenddocument=\enddocument
+
+\makeatletter
+\def\l@subsection{\@tocline{2}{0pt}{2.5pc}{5pc}{}}
+\makeatother
+
+
+% =================================================================
+% THESIS TITLE, DATE, AUTHOR, DEPARTMENT, AND PROGRAM
+% =================================================================
+\renewcommand{\title}[1]{\gdef\thetitle{#1}}
+
+\renewcommand{\date}[2]{
+    \gdef\thedate{#1, #2}
+    \gdef\themonth{#1}
+    \gdef\theyear{#2}
+}
+
+\newcommand{\dateorinvalid}[3]{ % month, year, error (1 | 0)
+    \IfInteger{#2}{
+        \DTMsavenow{now}
+        \ifnum\number#2<\DTMfetchyear{now}
+            \ifnum#3=1\ClassError{Thesis}{Invalid year "#2". You can't publish a thesis in the past! The year must be at least \DTMfetchyear{now}}{}\else\fi
+            {\color{red}\textbf{\textsc{Error:} Invalid Date}} 
+        \else
+            \IfStrEqCase{#1}{
+                {\ifpt{Janeiro}{January}}{#1, #2}
+                {\ifpt{Fevereiro}{February}}{#1, #2}
+                {\ifpt{Mar\c{c}o}{March}}{#1, #2}
+                {\ifpt{Abril}{April}}{#1, #2}
+                {\ifpt{Maio}{May}}{#1, #2}
+                {\ifpt{Junho}{June}}{#1, #2}
+                {\ifpt{Julho}{July}}{#1, #2}
+                {\ifpt{Agosto}{August}}{#1, #2}
+                {\ifpt{Setembro}{September}}{#1, #2}
+                {\ifpt{Outubro}{October}}{#1, #2}
+                {\ifpt{Novembro}{November}}{#1, #2}
+                {\ifpt{Dezembro}{December}}{#1, #2}}
+                [
+                    \ifnum#3=1\ClassError{Thesis}{Invalid month "#1". Should be one of: January, February, March, April, May, June, July, August, September, October, November, December (case-sensitive)}{}\else\fi
+                    {\color{red}\textbf{\textsc{Error:} Invalid Date}}
+                ]
+        \fi
+    }{
+        \ifnum#3=1\ClassError{Thesis}{Year "#2" is not an integer}{}\else\fi
+        {\color{red}\textbf{\textsc{Error:} Invalid Date}}
+    }
+}
+
+\renewcommand{\author}[1]{\gdef\theauthor{#1}}
+
+\newcommand{\department}[1]{
+    \ifdef\thedepartment{
+        \edef\thedepartment{\thedepartment{}~\\~\\#1}
+    }{ % else
+        \gdef\thedepartment{#1}
+    }
+}
+
+\newcommand{\program}[1]{\gdef\theprogram{#1}}
+
+
+% =================================================================
+% SUPERVISORS
+% =================================================================
+\newcounter{numsupervisors}
+\newcommand{\supervisor}[2]{
+    \stepcounter{numsupervisors}
+    \ifnum\value{numsupervisors}>2
+        \ClassError{Dissertation}{You're trying to provide \arabic{numsupervisors} supervisors, which is not allowed. Your dissertation can only have up to two supervisors: two from ISCTE-IUL, or one from ISCTE-IUL and one from another institution}{}
+    \else
+        \ifdef\thesupervisors{
+            \edef\thesupervisors{\thesupervisors{}~\\~\\#1,\\#2}
+        }{ % else
+            \gdef\thesupervisors{#1,\\#2}
+        }
+    \fi
+}
+% ========================================================
+
+\newcommand{\acknowledgements}[1]{\gdef\theacknowledgements{#1}}
+
+\newcommand{\dedication}[1]{\gdef\thededication{#1}}
+
+% =================================================================
+
+
+% =================================================================
+% HEURISTIC "WORD COUNT" (SPACE-SEPARATED TOKENS)
+% =================================================================
+\newcommand{\wordcount}[2][]{
+    \makeatletter
+        \expandarg
+        \StrCount{#2}{ }[\wc@spaces]
+        \edef#1{\number\numexpr\wc@spaces+1\relax}
+    \makeatother
+}
+
+\newcounter{numkeywordspt}
+\newcounter{numkeywords}
+
+
+% =================================================================
+% RESUMO, ABSTRACT, AND KEYWORDS
+% =================================================================
+\newtoggle{inResumo}\togglefalse{inResumo}
+\newtoggle{inAbstract}\togglefalse{inAbstract}
+
+\newcommand{\keyword}[1]{
+\iftoggle{inResumo}{
+    \noexpand\ifdef\noexpand\thekeywordspt
+    {\noexpand\xdef\noexpand\thekeywordspt{\noexpand\thekeywordspt, #1}}
+    {\noexpand\gdef\noexpand\thekeywordspt{#1}}
+    \noexpand\stepcounter{numkeywordspt}
+}{
+    \iftoggle{inAbstract}{
+        \noexpand\ifdef\noexpand\thekeywords
+        {\noexpand\xdef\noexpand\thekeywords{\noexpand\thekeywords, #1}}
+        {\noexpand\gdef\noexpand\thekeywords{#1}}
+        \noexpand\stepcounter{numkeywords}
+    }{
+        \ClassError{Thesis}{The keyword command can only be used inside the Resumo and Abstract environments}{}
+    }
+}
+}
+
+\NewEnviron{resumo}{
+    \iftoggle{inResumo}{
+        \ClassError{Thesis}{You can't define Resumo within another Resumo}{}
+    }{
+        \iftoggle{inAbstract}{
+            \ClassError{Thesis}{You can't define Resumo within the Abstract}{}
+        }{
+            \ifdef\abstractptdefined{
+                \ClassError{Thesis}{The Resumo environment may only be used once}{}
+            }{
+                \toggletrue{inResumo}
+                \xdef\theabstractpt{\BODY}
+
+                \begingroup
+                    \wordcount[\wcnt]{\BODY} 
+                    \xdef\resumowordcount{\wcnt}
+                \endgroup
+
+                \gdef\abstractptdefined{}
+            }
+        }
+    }
+}[\togglefalse{inResumo}]
+%
+\RenewEnviron{abstract}{
+    \iftoggle{inResumo}{
+        \ClassError{Thesis}{You can't define the Abstract inside the Resumo}{}
+    }{
+        \iftoggle{inAbstract}{
+            \ClassError{Thesis}{You can't define an Abstract within another Abstract}{}
+        }{
+            \ifdef\abstractdefined{
+                \ClassError{Thesis}{The Abstract environment may only be used once}{}
+            }{
+                \toggletrue{inAbstract}
+                \xdef\theabstract{\BODY}
+
+                \begingroup
+                    \wordcount[\wcnt]{\BODY} 
+                    \xdef\abstractwordcount{\wcnt}
+                \endgroup
+                
+                \gdef\abstractdefined{}
+            }
+        }
+    }
+}[\togglefalse{inAbstract}]
+
+
+% =================================================================
+% DISPLAY "WAS" OR "WERE" ACCORDING TO COUNTER VALUE
+% =================================================================
+\newcommand{\waswere}[1]{
+\ifnum\value{#1}>1
+    were
+\else
+    \ifnum\value{#1}=0
+        were
+    \else
+        was
+    \fi
+\fi
+}
+
+% =================================================================
+
+\newcommand{\acronyms}[1]{\gdef\theacronyms{#1}}
+
+% =================================================================
+
+\definecolor{ISCTEDarkBlue}{rgb}{0,0.08,0.45}
+
+\renewenvironment{document}{\olddocument
+
+
+% =================================================================
+% COVER PAGE
+% =================================================================
+\sffamily
+\frontFont
+\begin{flushleft}
+\ifpt{\includegraphics[width=6.03cm]{images/iscte-pt.png}}{\includegraphics[width=6.03cm]{images/iscte.png}}\\[3.3mm]
+
+{\color{ISCTEDarkBlue}\hrulefill}
+~\\
+~\\
+~\\
+\ifdef\thetitle{
+    \textbf{\thetitle}
+}{
+    \ClassError{Dissertation}{Your dissertation needs a title. Define one using the \texttt{title} command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Title}}
+}~\\
+~\\
+~\\
+~\\
+\ifdef\theauthor{
+    \theauthor
+}{
+    \ClassError{Dissertation}{Your dissertation needs your name. Define one using the \texttt{author} command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Author}}
+}~\\
+~\\
+~\\
+~\\
+\ifdef\theprogram{
+    \theprogram
+}{
+    \ClassError{Dissertation}{Your dissertation needs a Master's programme name. Define one using the \texttt{program} command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Program}}
+}~\\
+~\\
+~\\
+~\\
+\ifnum\value{numsupervisors}=1
+    \ifpt{Orientador}{Supervisor}:
+    ~\\
+    ~\\
+    \thesupervisors
+\else
+    \ifnum\value{numsupervisors}<1
+        \ClassError{Dissertation}{Your dissertation must have at least one supervisor, but you did not provide any}{}
+        ~\\
+        ~\\
+        {\color{red}\textbf{\textsc{Error:} Dissertation needs at least 1 supervisor, but none were provided}}
+    \else
+        \ifnum\value{numsupervisors}>2
+            ~\\
+            ~\\
+            {\color{red}\textbf{\textsc{Error:} Thesis can only have up to 2 supervisors (inclusive), but \arabic{numsupervisors} \waswere{numsupervisors} provided}}
+        \else
+            \ifpt{Orientadores}{Supervisors}:
+            ~\\
+            ~\\
+            \thesupervisors
+        \fi
+    \fi
+\fi
+~\\
+\vfill\ifdef\thedate{\dateorinvalid\themonth\theyear1}{
+\ClassError{Dissertation}{Your dissertation needs a date. Define one using the \texttt{date} command}{}
+{\color{red}\textbf{\textsc{Error:} Undefined Date}}
+}
+\end{flushleft}
+\thispagestyle{empty}
+\cleardoublepage
+
+
+% =================================================================
+% SECOND COVER PAGE (WITH DEPARTMENT NAME AND JURY)
+% =================================================================
+\begin{flushleft}
+\begin{minipage}{\textwidth}
+    \ifpt{\includegraphics[width=6.03cm]{images/ista-pt.png}}{\includegraphics[width=6.03cm]{images/ista.png}}
+    \ifdef\includeibslogo{
+       \hfill\includegraphics[width=6.03cm]{images/ibs.png} 
+    }{}
+\end{minipage}\\[7mm]
+{\color{ISCTEDarkBlue}\hrulefill}
+~\\
+~\\
+~\\
+\ifdef\thedepartment{
+    \thedepartment
+}{
+    \ClassError{Dissertation}{Your dissertation needs a department name. Define one using the \texttt{department} command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Department}}
+}
+~\\
+~\\
+~\\
+~\\
+\ifdef\thetitle{
+    \textbf{\thetitle}
+}{
+    %\ClassError{Dissertation}{Your dissertation needs a title. Define one using the \texttt{title} command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Title}}
+}~\\
+~\\
+~\\
+~\\
+\ifdef\theauthor{
+    \theauthor
+}{
+    %\ClassError{Dissertation}{Your dissertation needs your name. Define one using the \texttt{author} command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Author}}
+}~\\
+~\\
+~\\
+~\\
+\ifdef\theprogram{
+    \theprogram
+}{
+    %\ClassError{Dissertation}{Your dissertation needs a Master's programme name. Define one using the \texttt{program} command}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Program}}
+}~\\
+~\\
+~\\
+~\\
+\ifnum\value{numsupervisors}=1
+    \ifpt{Orientador}{Supervisor}:
+    ~\\
+    ~\\
+    \thesupervisors
+\else
+    \ifnum\value{numsupervisors}<1
+        %\ClassError{Dissertation}{Your dissertation must have at least one supervisor, but you did not provide any}{}
+        ~\\
+        ~\\
+        {\color{red}\textbf{\textsc{Error:} Dissertation needs at least 1 supervisor, but none were provided}}
+    \else
+        \ifnum\value{numsupervisors}>2
+            ~\\
+            ~\\
+            {\color{red}\textbf{\textsc{Error:} Thesis can only have up to 2 supervisors (inclusive), but \arabic{numsupervisors} \waswere{numsupervisors} provided}}
+        \else
+            \ifpt{Orientadores}{Supervisors}:
+            ~\\
+            ~\\
+            \thesupervisors
+        \fi
+    \fi
+\fi
+~\\
+\vfill\ifdef\thedate{\dateorinvalid\themonth\theyear0}{
+%\ClassError{Dissertation}{Your dissertation needs a date. Define one using the \texttt{date} command}{}
+{\color{red}\textbf{\textsc{Error:} Undefined Date}}
+}
+\end{flushleft}
+\thispagestyle{empty}
+\rmfamily
+\normalsize
+\frontmatter
+%\addtocontents{toc}{\setcounter{tocdepth}{2}}
+\thispagestyle{empty}
+
+\frontmatter
+\addtocontents{toc}{\setcounter{tocdepth}{2}}
+\thispagestyle{empty}
+
+
+% =================================================================
+% DEDICATION PAGE
+% =================================================================
+\ifdef\thededication
+{
+    \begin{dedicationenv}%
+    \begin{flushright}
+    \thededication
+    \end{flushright}%
+    \end{dedicationenv}
+}
+
+
+% =================================================================
+% ACKNOWLEDGEMENTS PAGE
+% =================================================================
+\setcounter{page}{1}
+\pagenumbering{roman} %
+\ifdef\theacknowledgements
+{
+    \chapter*{\ifpt{Agradecimentos}{Acknowledgments}}
+    \theacknowledgements
+}
+
+
+% =================================================================
+% RESUMO
+% =================================================================
+\chapter*{Resumo}
+\ifdef\theabstractpt{
+\theabstractpt
+
+\edef\cnt{\number\numexpr\resumowordcount-\value{numkeywordspt}\relax}
+                    
+\ifnum\cnt>250
+    \ClassError{Thesis}{Your Resumo has too many words. The limit is 250, but you have written \cnt}{}
+\else\fi
+
+}{
+    \ClassError{Thesis}{Your thesis must have an Abstract in Portuguese (Resumo)}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Abstract}}
+}
+
+\vspace{3ex}
+\ifdef\thekeywordspt{
+    \ifnum\value{numkeywordspt}<3
+        \ClassError{Thesis}{Your thesis must have 3 to 6 keywords in Portuguese, but only \arabic{numkeywordspt} \waswere{numkeywordspt} provided}{}
+    \else
+        \ifnum\value{numkeywordspt}>6
+            \ClassError{Thesis}{Your thesis must have 3 to 6 keywords in Portuguese, but \arabic{numkeywordspt} \waswere{numkeywordspt} provided.}{}
+        \else\fi
+    \fi
+    \noindent\textbf{Palavras-Chave:} \textit{\thekeywordspt}
+}{
+\ClassError{Thesis}{Your thesis must have 3 to 6 keywords in Portuguese, but \arabic{numkeywordspt} \waswere{numkeywordspt} provided}{}
+\noindent\textbf{Palavras-Chave:} {\color{red}\textbf{\textsc{Error:} Undefined Keywords}}
+}
+
+
+% =================================================================
+% ABSTRACT
+% =================================================================
+\chapter*{Abstract}
+\ifdef\theabstract{
+\theabstract
+
+\edef\cnt{\number\numexpr\abstractwordcount-\value{numkeywords}\relax}
+                    
+\ifnum\cnt>250
+    \ClassError{Thesis}{Your Abstract has too many words. The limit is 250, but you have written \cnt}{}
+\else\fi
+
+}{
+    \ClassError{Thesis}{Your thesis must have an Abstract in English}{}
+    {\color{red}\textbf{\textsc{Error:} Undefined Abstract}}
+}
+
+\vspace{3ex}
+\ifdef\thekeywords{
+    \ifnum\value{numkeywords}<3
+        \ClassError{Thesis}{Your thesis must have 3 to 6 keywords in English, but only \arabic{numkeywords} \waswere{numkeywords} provided}{}
+    \else
+        \ifnum\value{numkeywords}>6
+            \ClassError{Thesis}{Your thesis must have 3 to 6 keywords in English, but \arabic{numkeywords} \waswere{numkeywords} provided}{}
+        \else\fi
+    \fi
+    \noindent\textbf{Keywords:} \textit{\thekeywords}
+}{
+\noindent\textbf{Keywords:} {\color{red}\textbf{\textsc{Error:} Undefined Keywords}}
+}
+
+\ifnum\value{numkeywordspt}=\value{numkeywords}\else
+    \ClassError{Thesis}{Portuguese and English keywords don't match. There are \arabic{numkeywordspt} Portuguese keywords and \arabic{numkeywords} English keywords}{}
+\fi
+
+
+% =================================================================
+% PORTUGUESE LOCALISATION
+% =================================================================
+\renewcommand{\contentsname}{\ifpt{\'{I}ndice}{Contents}}
+\renewcommand{\listfigurename}{\ifpt{Lista de Figuras}{List of Figures}}
+\renewcommand{\listtablename}{\ifpt{Lista de Tabelas}{List of Tables}}
+
+\renewcommand{\chaptername}{\ifpt{Cap\'{i}tulo}{Chapter}}
+
+\renewcommand{\figurename}{\ifpt{Figura}{Figure}}
+\renewcommand{\tablename}{\ifpt{Tabela}{Table}}
+\renewcommand{\proofname}{\ifpt{Prova}{Proof}}
+
+
+% =================================================================
+% TABLE OF CONTENTS, LIST OF FIGURES, LIST OF TABLES, AND ACRONYMS
+% =================================================================
+\tableofcontents
+\listoffigures
+\listoftables
+\cleardoublepage
+%\printglossary[type=\acronymtype, nonumberlist, nogroupskip]
+\ifdef\theacronyms
+{
+    \chapter*{\ifpt{Lista de Acr\'{o}nimos}{List of Acronyms}}
+    \begin{acronym}
+    \theacronyms
+    \end{acronym}
+}
+
+
+% =================================================================
+% DOCUMENT BODY STARTS HERE
+% =================================================================
+\mainmatter
+
+\hyphenation{wri-te he-re pro-per hy-phe-ni-za-tion
+}%
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+}{
+\printbibliography[title={\ifpt{Refer\^{e}ncias Bibliogr\'{a}ficas}{References}}]
+\oldenddocument
+}

@@ -3,7 +3,12 @@
   <source media="(prefers-color-scheme: light)" srcset="Resources/isctex-dark.png">
   <img alt="ISCTE Tecnologias e Arquitetura LaTeX" src="Resources/isctex-dark.png">
 </picture>
+<br>
 
+> [!IMPORTANT]
+> If you're using Overleaf, we recommend compiling the templates with LuaLaTeX and using the latest TeX Live version. **If your compilation times out (Overleaf is becoming increasingly stricter with compilation time limits for free accounts...), you may need to consider using the paid plan (monthly subscription) or a local TeX editor installed on your system (free).**
+
+<br>
 
 ### [**🎓 Master's Dissertation**](Master's%20Dissertation)
 
@@ -18,8 +23,6 @@ Can be used for:
 Can be used for:
 
 - Doctoral Programme in Information Science and Technology
-
-
 
 ### [**🎓 PhD Research Project Proposal**](Research%20Project%20Proposal)
 

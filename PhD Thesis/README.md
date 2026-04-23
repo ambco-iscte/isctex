@@ -1,7 +1,7 @@
 # 🎓 PhD Thesis
 
 > [!IMPORTANT]
-> If you're using Overleaf (you should; it's great), we recommend compiling the templates with LuaLaTeX and using the latest TeX Live version.
+> If you're using Overleaf, we recommend compiling the templates with LuaLaTeX and using the latest TeX Live version. **If your compilation times out (Overleaf is becoming increasingly stricter with compilation time limits for free accounts...), you may need to consider using the paid plan (monthly subscription) or a local TeX editor installed on your system (free).**
 
 This LaTeX template is for your PhD Thesis, or for the yearly reports for the same doctoral programme at Iscte. As with the previous templates, non-work-related information such as LaTeX package configurations is stored in a separate file.
 
@@ -11,18 +11,18 @@ The template can be used in two ways, depending on if you want your thesis docum
 
 For the thesis proper:
 ```tex
-\usepackage{thesis}
+\documentclass{thesis}
 ```
 
 For yearly reports:
 ```tex
-\usepackage[report]{thesis}
+\documentclass[report]{thesis}
 ```
 
 Additionally, if you'd like to write your thesis in Portuguese, you can change the built-in titles and names to Portuguese using the `pt` option:
 
 ```tex
-\usepackage[pt]{thesis}
+\documentclass[pt]{thesis}
 ```
 
 

@@ -1,7 +1,7 @@
 # 🎓 Master's Dissertation
 
 > [!IMPORTANT]
-> If you're using Overleaf (you should; it's great), we recommend compiling the templates with LuaLaTeX and using the latest TeX Live version.
+> If you're using Overleaf, we recommend compiling the templates with LuaLaTeX and using the latest TeX Live version. **If your compilation times out (Overleaf is becoming increasingly stricter with compilation time limits for free accounts...), you may need to consider using the paid plan (monthly subscription) or a local TeX editor installed on your system (free).**
 
 > [!WARNING]
 > Sometimes (it depends on who verifies your dissertations' style guidelines compliance), ISTA asks that the Introduction chapter, and possibly the Conclusion chapter, not be numbered. To do this, you can append an asterisk to the `\chapter`, `\section`, `\subsection`, and `\subsubsection` commands to remove the numbering. For example: `\chapter*{Not a Numbered Chapter}`.
@@ -12,22 +12,22 @@ This template serves as an adaptation of ISTA's style guidelines for dissertatio
 
 The template can be used in two ways, depending on if you want your thesis document to include the ISCTE Business School logo (for the Master's in Data Science) or not (for the remaining Master's programmes).
 
-For students of the Master's in Data Science (which is under joint tutelage of ISTA and IBS):
-
-```tex
-\usepackage[ibs]{dissertation}
-```
-
 For students of the Master's in Computer Science and Engineering or the Master's in Telecommunications Engineering:
 
 ```tex
-\usepackage{dissertation}
+\documentclass{dissertation}
+```
+
+For students of the Master's in Data Science (which is under joint tutelage of ISTA and IBS):
+
+```tex
+\documentclass[ibs]{dissertation}
 ```
 
 Additionally, if you'd like to write your dissertation in Portuguese, you can change the built-in titles and names to Portuguese using the `pt` option (which you can use alongside `ibs` by using `ibs,pt` or `pt,ibs`):
 
 ```tex
-\usepackage[pt]{dissertation}
+\documentclass[pt]{dissertation}
 ```
 
 
