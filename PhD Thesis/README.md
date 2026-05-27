@@ -5,6 +5,11 @@
 
 This LaTeX template is for your PhD Thesis, or for the yearly reports for the same doctoral programme at Iscte. As with the previous templates, non-work-related information such as LaTeX package configurations is stored in a separate file.
 
+```
+> [!WARNING]  
+> In the 2025/2026 school year, enrollees of the Doctoral Programme in Information Science and Technology were asked to turn in their yearly progress report by filling out a template provided by the Ph.D. Programme Manager. If this is the case for you, then you should fill out the official template and **not** the one present in this repository. Contact the ISTA Ph.D. Manager at phd.ista@iscte-iul.pt for any questions.
+```
+
 
 
 The template can be used in two ways, depending on if you want your thesis document or a yearly report.
